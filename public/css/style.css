@@ -1,0 +1,51 @@
+
+h1, h2 {
+    color: #E1701A;
+}
+
+.completed{
+    text-decoration: line-through;
+    color: gray;
+}
+
+li {
+    list-style-type: none;
+    margin: 2% 1%;
+}
+
+
+a {
+    text-decoration: none;
+    color: #E1701A;
+}
+
+/* .not{
+    text-decoration: underline;
+} */
+
+
+body {
+    background: #F6DCBF;
+    padding: 5% 5%;
+    font: 400 16px 'Varela Round', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+ul {
+    width: 30%;
+}
+
+.fa-star {
+    color: #665C84;
+}
+
+.fa-edit {
+    color: #30475E;
+}
+
+.fa-trash {
+    color: #343434;
+}

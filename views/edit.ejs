@@ -1,0 +1,100 @@
+<!-- This file is added -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+    integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
+    
+</head>
+
+<body>
+    <h1>Todos</h1>
+    <ul>
+        <% todos.forEach( el=> { %>
+            <% if (el._id == idOfItem) { %>
+                <li class="todo-list-item">
+                    <!-- This form will make a post request to server, sending item id in url -->
+                    <form action="/todos/edit/<%= el._id %>" method="POST">
+                        <% if (el.todo.length >= 50) { %>
+                            <textarea id="editarea" rows="5" cols="45" name="todoItem"><%= el.todo %></textarea>
+                        <% } else { %>
+                            <input id="editarea" type="text" size="35" value="<%= el.todo %>" name="todoItem">
+                        <% } %>
+
+                        <label class="" for="inputGroupSelect01">Priority</label>
+                        <select name="priority" class="form-select" id="inputGroupSelect01">
+                            <option selected value="<%= el.priority %>">
+                                <% if (el.priority == 1) { %>
+                                    Low
+                                <% } else if (el.priority == 2) { %>
+                                    Normal
+                                <% } else if (el.priority == 3) { %>
+                                    Important
+                                <% } else if (el.priority == 4) { %>
+                                    Critical
+                                <% } else if (el.priority == 0) { %>
+                                    Choose...
+                                <% } %>
+                            </option>
+                            <option value="1">Low</option>
+                            <option value="2">Normal</option>
+                            <option value="3">Important</option>
+                            <option value="4">Critical</option>
+                        </select>
+
+                        <!-- confirm is a submit button for POST -->
+                        <button type="submit" class="confirm">Confirm</button>
+                        
+                        <!-- cancel gets routed to '/todos' -->
+                        <a href="/todos" class="cancel">Cancel</a>
+                    </form>
+                </li>
+            <% } else { %>
+                    <li class='todoItem' data-id='<%= el._id %>'>
+                        <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
+                        
+                        
+                        <!-- add stars for priority -->
+                        <% for (let i = 0; i < Number(el.priority); i++) { %>
+                            <i class="fas fa-star"></i>
+                        <% } %>
+                
+                        
+                        <!-- client side js event listener -->
+                        <a href='/todos/edit/<%= el._id %>' class="edit">
+                            <span class="fas fa-edit"></span>
+                        </a>
+
+                        <!-- Changed <span class='del'> Delete </span> to an icon: -->
+                        <span class="del"><i class="fas fa-trash"></i></span>
+                    </li>
+                <% } %>
+        <% }) %>
+    </ul>
+
+    <h2>
+        <%= user.userName %> has <%= left %> things left to do.
+    </h2>
+
+    <select name="priority" class="form-select" id="inputGroupSelect01">
+        <option selected value="0">Choose...</option>
+        <option value="1">Low</option>
+        <option value="2">Normal</option>
+        <option value="3">Important</option>
+        <option value="4">Critical</option>
+    </select>
+    <input type="submit">
+
+    <a href="/logout">Logout</a>
+
+    <script src="/js/main.js"></script>
+</body>
+
+</html>

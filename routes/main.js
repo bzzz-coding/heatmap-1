@@ -3,12 +3,11 @@ const express = require('express')
 const router = express.Router()
 const authController = require('../controllers/auth') 
 const homeController = require('../controllers/home')
-
 // const { ensureAuth, ensureGuest } = require('../middleware/auth')
 
 router.get('/', homeController.getIndex)
-router.get('/test', homeController.getTest)
-router.get('/calendar', homeController.getCalendar)
+// router.get('/test', homeController.getTest)
+// router.get('/calendar', homeController.getCalendar)
 
 router.get('/login', authController.getLogin)
 router.post('/login', authController.postLogin)

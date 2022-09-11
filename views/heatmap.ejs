@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/normalized.css">
     <link rel="stylesheet" href="/css/style2.css">
-    <title>Mood Tracker</title>
+    <title>100devs Daily Assignments Heatmap</title>
 </head>
 
 <body>
@@ -17,7 +17,7 @@
       
     <header>
       <h1>
-        Assignment Completion Heatmap
+        100devs Daily Assignments Heatmap
       </h1>
     </header>
 
@@ -32,7 +32,7 @@
         <p id="pop-up-day"></p>
         <h2 id="pop-up-date"></h2>
         
-        <form id="mood-otd" action="/todos/add" method="POST">
+        <form id="mood-otd" action="/heatmap/add" method="POST">
             <%# Date %>
             <label for="date">Choose date:</label>
             <input type="date" id="date" name="date"  ass="block"  value="" min="2022-01-01" max="" required>

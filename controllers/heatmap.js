@@ -116,8 +116,26 @@ module.exports = {
         }
     },
 
+  //   quickAddaddAssignment: async (req, res) => {
+  //     let checked = []
+  //     for (let value of [req.body.anki, req.body.bank, req.body.codingChallenge]) {
+  //         if (value) checked.push(value)
+  //     }
+  //     try {
+  //         // using the Assignment model based on the schema, create a new todo item
+  //         await Assignment.create({
+  //           userId: req.user.id,
+  //           completed: checked
+  //         })
+  //         console.log('Assignment has been created!')
+  //         res.redirect('/heatmap')
+  //     } catch (err) {
+  //         console.log(err)
+  //     }
+  // },
+
     addAssignment: async (req, res) => {
-        const date = req.body.date
+        const date = req.body.date || Date.now()
         console.log(date)
         let checked = []
         for (let value of [req.body.anki, req.body.bank, req.body.codingChallenge]) {

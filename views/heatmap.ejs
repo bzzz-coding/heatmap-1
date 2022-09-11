@@ -14,6 +14,24 @@
 </head>
 
 <body>
+  <form id="express-form" action="/heatmap/add" method="POST">
+    <div class="selectContainer block">
+        <input type="checkbox" name="anki" id="anki" value="Anki">
+        <label for="overallPositive" >Studied Anki Flashcards</label>
+
+        <input type="checkbox" name="bank" id="bank" value="Bank">
+        <label for="overallPositive" >Practiced Interview Questions</label>
+
+        <input type="checkbox" name="codingChallenge" id="codingChallenge" value="Coding Challenge">
+        <label for="overallPositive" >Solved Coding Challenge</label>
+    </div>
+    <!-- <div class="notes-container">
+        <label for="notes">Optional notes:</label>
+        <textarea id="notes" name="notes" rows="5" cols="33" placeholder="What did you learn today? Any celebrations?"></textarea>
+    </div> -->
+    <button form="mood-otd" type="submit">Submit</button>
+  </form>
+
   <div id="wrapper">
       
     <header>

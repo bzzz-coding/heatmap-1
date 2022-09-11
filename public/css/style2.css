@@ -31,11 +31,18 @@ body {
 /* LAYOUT
 /*******************************************/
 
-/* wrapper has  */
+#express-form {
+  display: block;
+  margin: 2% auto;
+  padding: 1% auto;
+  text-align: center;
+}
+
+/* wrapper */
 #wrapper {
   display: flex;
   position: relative;
-  min-height: 100vh;
+  min-height: 50vh;
   min-width: 100vw;
   margin: 0;
   padding: 0;

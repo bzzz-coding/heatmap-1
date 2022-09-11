@@ -5,7 +5,11 @@ const { ensureAuth } = require('../middleware/auth')
 
 router.get('/', ensureAuth, todosController.getTodos)
 
+// get todos/heatmap
 router.get('/heatmap', todosController.getHeatmap)
+
+// post to todos/add
+router.post('/add', todosController.addAssignment)
 
 router.post('/createTodo', todosController.createTodo)
 

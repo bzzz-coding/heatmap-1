@@ -8,6 +8,8 @@ const homeController = require('../controllers/home')
 
 router.get('/', homeController.getIndex)
 router.get('/test', homeController.getTest)
+router.get('/calendar', homeController.getCalendar)
+
 router.get('/login', authController.getLogin)
 router.post('/login', authController.postLogin)
 router.get('/logout', authController.logout)

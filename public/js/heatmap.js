@@ -109,31 +109,31 @@ close.addEventListener('click', () => {
     document.querySelector('#note-entry').textContent = ''
 })
 
-function fetchData() {
-    fetch('/motd')
-    .then(res => res.json())
-    .then(data => {
-        data.forEach(entry => {
-            /* DAY BOX COLORS */
-            // Add a class to day box to change colors
-            if(entry.overallMood === 'neutral') {
-                document.querySelector(`#date_${entry.date}`).classList.add('neutral');
-            } else if(entry.overallMood === 'positive') {
-                document.querySelector(`#date_${entry.date}`).classList.add('positive');
-            } else if(entry.overallMood === 'negative') {
-                document.querySelector(`#date_${entry.date}`).classList.add('negative');
-            }
-            // NOTES
-            // Show notes indicator if notes exists
-            if(entry.notes) {
-                // Add class to show styles if notes exists
-                document.querySelector(`#date_${entry.date} .notes-indicator`).classList.add('show')
-            }
-        })
-    })
-}
+// function fetchData() {
+//     fetch('/add')
+//     .then(res => res.json())
+//     .then(data => {
+//         data.forEach(entry => {
+//             /* DAY BOX COLORS */
+//             // Add a class to day box to change colors
+//             if(entry.overallMood === 'Anki') {
+//                 document.querySelector(`#date_${entry.date}`).classList.add('neutral');
+//             } else if(entry.overallMood === 'positive') {
+//                 document.querySelector(`#date_${entry.date}`).classList.add('positive');
+//             } else if(entry.overallMood === 'negative') {
+//                 document.querySelector(`#date_${entry.date}`).classList.add('negative');
+//             }
+//             // NOTES
+//             // Show notes indicator if notes exists
+//             if(entry.notes) {
+//                 // Add class to show styles if notes exists
+//                 document.querySelector(`#date_${entry.date} .notes-indicator`).classList.add('show')
+//             }
+//         })
+//     })
+// }
 
-fetchData()
+// fetchData()
 
 /* DELETING ENTRIES */
 const deleteEntry = document.querySelector('#delete')

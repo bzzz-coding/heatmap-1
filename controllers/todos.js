@@ -3,11 +3,13 @@ const Assignment = require('../models/Heatmap')
 
 module.exports = {
     getHeatmap: async (req, res) => {
-        console.log(req.user)
+        // console.log(req.user)
         try {
             let today = new Date()
             let thisYear = today.getFullYear()
             let thisMonth = today.getMonth()
+            // console.log(`today: ${today}; thisYear: ${thisYear}; thisMonth: ${thisMonth}`)
+            
             // let thisMonthName = today.toLocaleString('default', { month: 'long' })
             // let todayDate = today.getDate()
 
@@ -30,6 +32,8 @@ module.exports = {
             if (firstDay.getDay() !== 0) {
                 firstDay.setDate(firstDay.getDate() - 6 + firstDay.getDay())
             }
+            // console.log(`firstDay: ${firstDay}`)
+            
         
             let nextMonth = thisMonth + 1
             let endYear = thisYear
@@ -41,57 +45,101 @@ module.exports = {
             if (lastDay.getDay() !== 6) {
                 lastDay = new Date(endYear, nextMonth, 12 - lastDay.getDay())
             }
+            // console.log(`lastDay: ${lastDay}`)
 
 
             // Loop for all days in the year for diplay on boxes, format short month name and date
             // Loop for all days in the year for id name, formatted YYYY - MM - DD
             let allDatesInYear = []
-            let dayObjectsInYear = []
+            let dayObjectsInYear = {}
+            let dayCounter = 1
 
         // format days and months to match calendar values
         for (let d = firstDay; d <= lastDay; d.setDate(d.getDate() + 1)) {
-            let month = new Date(d).getMonth() + 1
+
+            let year = d.getFullYear()
+
+            let month = d.getMonth() + 1
             if (month < 10) {
                 month = '0' + month;
             }
 
-            let date = new Date(d).getDate()
+            let date = d.getDate()
             if (date < 10) {
                 date = '0' + date;
             }
 
-            let dayCounter = 1
+            
             let weekday = weekdays[d.getDay()]
 
             // push into arrays
-            allDatesInYear.push(`${thisYear}-${month}-${date}`);
-            dayObjectsInYear.push({
-                full_date: `${thisYear}-${month}-${date}`,
-                month_long: `${new Date(d).toLocaleString('default', { month: 'long' })}`,
-                month_short: `${new Date(d).toLocaleString('default', { month: 'short' })}`,
+            allDatesInYear.push(`${year}-${month}-${date}`)
+            dayObjectsInYear[`${year}-${month}-${date}`] = {
+                // full_date: `${year}-${month}-${date}`,
+                tasks: [],
+                total: 0,
+                month_long: `${d.toLocaleString('default', { month: 'long' })}`,
+                month_short: `${d.toLocaleString('default', { month: 'short' })}`,
                 // date: `${new Date(d).getDate()}`, 
                 date: date,
-                year: thisYear,
+                year: year,
                 day: weekday,
                 day_of_year: dayCounter,
-            })
+            }
+            // console.log(dayObjectsInYear)
 
             dayCounter++
         }
             // sort from most recent to older data
             const assignments = await Assignment.find({ 
                 // userId: req.user.id, 
-                createdAt: {
-                $gte: firstDay,
-                $lte: lastDay
-              } 
+            //     createdAt: {
+            //     $gte: allDatesInYear[0],
+            //     $lte: allDatesInYear[allDatesInYear.length - 1]
+            //   } 
             })
-            res.render('test2.ejs', {assignments: assignments, allDatesInYear: allDatesInYear, dayObjectsInYear: dayObjectsInYear})
+            // console.log(`assignments: ${assignments}`)
+            for (let element of assignments) {
+                let date = JSON.stringify(element.date).slice(1, 11)
+                // console.log(date)
+
+                if (dayObjectsInYear[date]) {
+                    dayObjectsInYear[date].tasks = element.completed
+                    dayObjectsInYear[date].total = dayObjectsInYear[date].tasks.length
+                    // console.log(dayObjectsInYear[date])
+                }   
+            }
+            console.log(`array length: ${allDatesInYear.length}; obj length: ${Object.keys(dayObjectsInYear).length}`)
+            res.render('heatmap.ejs', {allDatesInYear: allDatesInYear, dayObjectsInYear: dayObjectsInYear})
         } catch (err) {
             console.log(err)
         }
+    },
 
-
+    addAssignment: async (req, res) => {
+        const date = req.body.date
+        console.log(date)
+        let checked = []
+        for (let value of [req.body.anki, req.body.bank, req.body.codingChallenge]) {
+            if (value) checked.push(value)
+        }
+        try {
+            // using the Assignment model based on the schema, create a new todo item
+            await Assignment.findOneAndUpdate({
+                date: date
+            }, 
+            {
+                completed: checked
+            }, 
+            {
+                // new: true,
+                upsert: true
+            })
+            console.log('Assignment has been added!')
+            res.redirect('/todos/heatmap')
+        } catch (err) {
+            console.log(err)
+        }
     },
 
     getTodos: async (req, res) => {

@@ -32,18 +32,18 @@
         <p id="pop-up-day"></p>
         <h2 id="pop-up-date"></h2>
         
-        <form id="mood-otd" action="/add" method="POST">
+        <form id="mood-otd" action="/todos/add" method="POST">
             <%# Date %>
             <label for="date">Choose date:</label>
             <input type="date" id="date" name="date"  ass="block"  value="" min="2022-01-01" max="" required>
             <div class="selectContainer block">
-                <input type="checkbox" name="anki" id="anki" value="Anki" required>
+                <input type="checkbox" name="anki" id="anki" value="Anki">
                 <label for="overallPositive" >Studied Anki Flashcards</label>
 
-                <input type="checkbox" name="bank" id="bank" value="Bank" required>
+                <input type="checkbox" name="bank" id="bank" value="Bank">
                 <label for="overallPositive" >Practiced Interview Questions</label>
 
-                <input type="checkbox" name="codingChallenge" id="codingChallenge" value="Coding Challenge" required>
+                <input type="checkbox" name="codingChallenge" id="codingChallenge" value="Coding Challenge">
                 <label for="overallPositive" >Solved Coding Challenge</label>
             </div>
             <div class="notes-container">
@@ -77,29 +77,34 @@
 
       <div class="week-divider"></div>
         <!-- loop to display a box for each day of the year -->
-        <% for (let i = 0; i < allDatesInYear.length; i++) {%>
+        <% for (let date of allDatesInYear) {%>
+
+          <% let shade %>
+          <% if (dayObjectsInYear[date].total == 1) { %>
+            <% shade = 'negative' %>
+          <% } else if (dayObjectsInYear[date].total == 2) { %>
+            <% shade = 'neutral' %>
+          <% } else if (dayObjectsInYear[date].total == 3) { %>
+            <% shade = 'positive' %>
+          <% } %>
 
           <!-- set class to .dayBox and .#; set id to #date_YYYY-MM-DD -->
-          <div class="<%= `${i} dayBox` %>" id="<%= 'date_' + allDatesInYear[i] %>">
+          <div class="<%= `${dayObjectsInYear[date].day_of_year} dayBox ${shade}` %>" id="<%= 'date_' + date %>">
 
             <!-- .dayBoxBubble .bubble_YYYY-MM-DD-->
-            <% if (assignments[i]) { %>
-              <div class="dayBoxBubble <%= 'bubble_' + allDatesInYear[i] %>">
-                <%= assignments[i].completed.join(', ') %>
-                <%= `${dayObjectsInYear[i].month_long.toLowerCase()} ${dayObjectsInYear[i].date}` %>
-              </div>
-            <% } else { %>
-              <div class="dayBoxBubble <%= 'bubble_' + allDatesInYear[i] %>">
-                <%= `${dayObjectsInYear[i].month_long.toLowerCase()} ${dayObjectsInYear[i].date}` %>
-              </div>
-            <% } %>
+            
+            <div class="dayBoxBubble <%= 'bubble_' + date %>">
+              <%= `${dayObjectsInYear[date].month_long.toLowerCase()} ${dayObjectsInYear[date].date}` %>
+              <%= `${dayObjectsInYear[date].tasks}` %>
+            </div>
+            
 
             <!-- .dayBoxPointer .bubble_YYYY-MM-DD -->
-            <div class="dayBoxPointer <%= 'bubble_' + allDatesInYear[i] %>">
+            <div class="dayBoxPointer <%= 'bubble_' + date %>">
             </div>
 
             <!-- .dateError .error_YYYY-MM-DD -->
-            <div class="dateError <%= 'error_' + allDatesInYear[i] %>">
+            <div class="dateError <%= 'error_' + date %>">
               Date is in the future!
             </div>
             
@@ -109,21 +114,20 @@
           </div>
 
           <!-- add Month label for the first saturday of each month -->
-          <% if(dayObjectsInYear[i].day == 'Saturday') {%>
+          <% if(dayObjectsInYear[date].day == 'Saturday') {%>
             <!-- .week-divider -->
             <div class="week-divider">
             </div>
 
             <!-- if current day is within the first 7 days of the month, add the Month label -->
-            <% if(dayObjectsInYear[i].date <= 7) { %>
+            <% if(dayObjectsInYear[date].date <= 7) { %>
                 <!-- .monthLabel -->
                 <div class="monthLabel">
-                  <%= dayObjectsInYear[i].month_short %>
+                  <%= dayObjectsInYear[date].month_short %>
                 </div>
             <% } %>
           <% } %>
         <% } %>
-    
     </section>
   
   <!-- wrapper div -->

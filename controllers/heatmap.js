@@ -110,7 +110,7 @@ module.exports = {
                 }   
             }
             console.log(`array length: ${allDatesInYear.length}; obj length: ${Object.keys(dayObjectsInYear).length}`)
-            res.render('heatmap.ejs', {allDatesInYear: allDatesInYear, dayObjectsInYear: dayObjectsInYear})
+            res.render('heatmap.ejs', {allDatesInYear: allDatesInYear, dayObjectsInYear: dayObjectsInYear, user: req.user})
         } catch (err) {
             console.log(err)
         }

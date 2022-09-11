@@ -7,8 +7,8 @@ const MongoStore = require('connect-mongo')(session)
 const flash = require('express-flash')
 const logger = require('morgan')
 const connectDB = require('./config/database')
-const mainRoutes = require('./routes/main')
-const todoRoutes = require('./routes/todos')
+const homeRoutes = require('./routes/home')
+// const todoRoutes = require('./routes/todos')
 const heatmapRoutes = require('./routes/heatmap')
 
 require('dotenv').config({path: './config/.env'})
@@ -42,7 +42,7 @@ app.use(passport.session())
 
 app.use(flash())
 
-app.use('/', mainRoutes)
+app.use('/', homeRoutes)
 app.use('/heatmap', heatmapRoutes)
 // app.use('/todos', todoRoutes)
 

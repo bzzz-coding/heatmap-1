@@ -6,13 +6,13 @@ const homeController = require('../controllers/home')
 // const { ensureAuth, ensureGuest } = require('../middleware/auth')
 
 router.get('/', homeController.getIndex)
-// router.get('/test', homeController.getTest)
-// router.get('/calendar', homeController.getCalendar)
-
 router.get('/login', authController.getLogin)
 router.post('/login', authController.postLogin)
 router.get('/logout', authController.logout)
 router.get('/signup', authController.getSignup)
 router.post('/signup', authController.postSignup)
+
+// router.get('/test', homeController.getTest)
+// router.get('/calendar', homeController.getCalendar)
 
 module.exports = router

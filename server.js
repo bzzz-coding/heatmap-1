@@ -8,7 +8,6 @@ const flash = require('express-flash')
 const logger = require('morgan')
 const connectDB = require('./config/database')
 const homeRoutes = require('./routes/home')
-// const todoRoutes = require('./routes/todos')
 const heatmapRoutes = require('./routes/heatmap')
 
 require('dotenv').config({path: './config/.env'})
@@ -44,7 +43,6 @@ app.use(flash())
 
 app.use('/', homeRoutes)
 app.use('/heatmap', heatmapRoutes)
-// app.use('/todos', todoRoutes)
 
  
 app.listen(process.env.PORT, ()=>{

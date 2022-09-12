@@ -510,18 +510,27 @@ textarea {
 
 
 /* ===================== */
-* {
+/* * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
+} */
+
+
 body {
-  /* display: flex; */
+  /* display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  min-height: 100vh; */
   background: #ebf5fc;
 }
+
+.signout {
+  text-align: right;
+  margin-top: 0;
+  width: 90%;
+}
+
 ul {
   position: relative;
   display: flex;
@@ -530,7 +539,8 @@ ul {
   flex-wrap: wrap;
   border-radius: 10px;
   padding: 20px;
-  width: 240px;
+  /* width: 240px; */
+  width: 100%;
   background: #ebf5fc;
   box-shadow: -2px -2px 5px rgba(255, 255, 255, 1), 3px 3px 5px rgba(0, 0, 0, 0.1);
 }
@@ -567,95 +577,4 @@ ul li label .icon-box {
 ul li label .icon-box .fa {
   font-size: 30px;
   color: #6a9bd8;
-}
-/* --------Social Icons-------- */
-/* Color Variables */
-/* Social Icon Mixin */
-.social-icons {
-  display: flex;
-  position: absolute;
-  bottom: 25px;
-  right: 25px;
-}
-.social-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  width: 40px;
-  height: 40px;
-  margin: 0 0.7rem;
-  border-radius: 50%;
-  cursor: pointer;
-  font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-  font-size: 1.5rem;
-  text-decoration: none;
-  transition: all 0.15s ease;
-}
-.social-icon:hover {
-  color: #fff;
-}
-.social-icon:hover .tooltip {
-  visibility: visible;
-  opacity: 1;
-  transform: translate(-50%, -150%);
-}
-.social-icon:active {
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5) inset;
-}
-.social-icon--twitter {
-  background: #2b97f1;
-  color: #fff;
-}
-.social-icon--twitter .tooltip {
-  background: #2b97f1;
-  color: currentColor;
-}
-.social-icon--twitter .tooltip:after {
-  border-top-color: #2b97f1;
-}
-.social-icon--codepen {
-  background: #000;
-  color: #fff;
-}
-.social-icon--codepen .tooltip {
-  background: #000;
-  color: currentColor;
-}
-.social-icon--codepen .tooltip:after {
-  border-top-color: #000;
-}
-.social-icon i {
-  position: relative;
-  top: 1px;
-}
-/* Tooltips */
-.tooltip {
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 50%;
-  padding: 0.4rem 0.6rem;
-  border-radius: 40px;
-  font-size: 0.4rem;
-  font-weight: bold;
-  opacity: 0;
-  pointer-events: none;
-  text-transform: uppercase;
-  transform: translate(-50%, -100%);
-  transition: all 0.3s ease;
-  z-index: 1;
-}
-.tooltip:after {
-  display: block;
-  position: absolute;
-  bottom: 1px;
-  left: 50%;
-  width: 0;
-  height: 0;
-  content: "";
-  border: solid;
-  border-width: 10px 10px 0 10px;
-  border-color: transparent;
-  transform: translate(-50%, 100%);
 }

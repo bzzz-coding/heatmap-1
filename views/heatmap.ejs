@@ -5,6 +5,15 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<!-- fontawesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/style.css">
+
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,900&display=swap" rel="stylesheet"><link rel="stylesheet" href="/css/normalized.css">
@@ -13,11 +22,44 @@
 </head>
 
 <body>
+  <div class="signout">
+    <a href="/logout">Sign Out</a>
+  </div>
     
   <div id="wrapper">
 
     <form id="express-form" action="/heatmap/add" method="POST">
-      <div class="input-wrapper">
+      <ul>
+        <li>
+          <label>
+            <input type="checkbox" name="anki" value="Anki">
+            <div class="icon-box">
+              <i class="fa fa-book" aria-hidden="true"></i>
+            </div>
+          </label>
+        </li>
+        <li>
+          <label>
+            <input type="checkbox" name="bank" value="Bank">
+            <div class="icon-box">
+              <i class="fa fa-question" aria-hidden="true"></i>
+            </div>
+          </label>
+        </li>
+        <li>
+          <label> 
+            <input type="checkbox" name="codingChallenge" value="Coding Challenge">
+            <div class="icon-box">
+              <i class="fa fa-code" aria-hidden="true"></i>
+            </div>
+          </label>
+        </li>
+        <div class="icon-box">
+          <button class="ef-btn" form="express-form" type="submit">Submit Today's Assignment</button>
+        </div>
+      </ul>
+
+      <!-- <div class="input-wrapper">
         <label class="ef-label" for="anki">Studied Anki Flashcards
           <input class="ef-input" type="checkbox" name="anki" id="anki" value="Anki" />
           <span class="ef-span"></span>
@@ -32,9 +74,9 @@
           <input class="ef-input" type="checkbox" name="codingChallenge" id="codingChallenge" value="Coding Challenge" />
           <span class="ef-span"></span>
         </label>
-      </div>
+      </div> -->
         
-      <button class="ef-btn" form="express-form" type="submit">Express Log Today's Assignments</button>
+      <!-- <button class="ef-btn" form="express-form" type="submit">Express Log Today's Assignments</button> -->
     </form>
   
       
@@ -44,7 +86,7 @@
       </h1>
     </header>
 
-    <!-- Mood Picker Pop-up -->
+    <!-- Pop-up -->
     <div class="pop-up-container">
       <section class="pop-up">
         <div class="close-container">
@@ -115,13 +157,13 @@
           <% } %>
 
           <!-- set class to .dayBox and .#; set id to #date_YYYY-MM-DD -->
+          <a href="/heatmap/edit/<%=date%>">
           <div class="<%= `${dayObjectsInYear[date].day_of_year} dayBox ${shade}` %>" id="<%= 'date_' + date %>">
 
             <!-- .dayBoxBubble .bubble_YYYY-MM-DD-->
-            
             <div class="dayBoxBubble <%= 'bubble_' + date %>">
-              <%= `${dayObjectsInYear[date].month_long.toLowerCase()} ${dayObjectsInYear[date].date}` %>
-              <%= `${dayObjectsInYear[date].tasks}` %>
+              <%= `${dayObjectsInYear[date].month_short} ${dayObjectsInYear[date].date}` %>
+              <%= `- ${dayObjectsInYear[date].tasks.length}` %>
             </div>
             
 
@@ -137,7 +179,7 @@
             <!-- .notes-indicator -->
             <div class="notes-indicator">
             </div>
-          </div>
+          </div></a>
 
           <!-- add Month label for the first saturday of each month -->
           <% if(dayObjectsInYear[date].day == 'Saturday') {%>

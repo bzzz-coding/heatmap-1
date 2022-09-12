@@ -71,36 +71,36 @@ integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQV
             
             <input type="date" name="date" ass="block"  value="<%=date%>" min="2022-01-01" max="<%=today%>" required>
             <div class="selectContainer block">
-              <% if (assignment.completed && assignment.completed.includes('Anki')) { %>
-                  <div class="popup-input">
-                    <input type="checkbox" name="anki" id="anki" value="Anki" checked>
-                    <label for="overallPositive" >Studied Anki Flashcards</label>
-                  </div>
-              <% } else { %>
+              <% if (assignment && assignment.completed !== null && assignment.completed.includes('Anki')) { %>
+                <div class="popup-input">
+                  <input type="checkbox" name="anki" id="anki" value="Anki" checked>
+                  <label for="overallPositive" >Studied Anki Flashcards</label>
+                </div>
+              <% } else if (!assignment) { %>
                 <div class="popup-input">
                   <input type="checkbox" name="anki" id="anki" value="Anki">
                   <label for="overallPositive" >Studied Anki Flashcards</label>
                 </div>
               <% } %>
 
-              <% if (assignment.completed && assignment.completed.includes('Bank')) { %>
+              <% if (assignment && assignment.completed !== null && assignment.completed.includes('Bank')) { %>
                 <div class="popup-input">
                   <input type="checkbox" name="bank" id="bank" value="Bank" checked>
                   <label for="overallPositive" >Practiced Interview Questions</label>
                 </div>
-              <% } else { %>
+              <% } else if (!assignment) { %>
                 <div class="popup-input">
                   <input type="checkbox" name="bank" id="bank" value="Bank">
                   <label for="overallPositive" >Practiced Interview Questions</label>
                 </div>
               <% } %>
 
-              <% if (assignment.completed && assignment.completed.includes('Coding Challenge')) { %>
+              <% if (assignment && assignment.completed !== null && assignment.completed.includes('Coding Challenge')) { %>
                 <div class="popup-input">
                   <input type="checkbox" name="codingChallenge" id="codingChallenge" value="Coding Challenge" checked>
                   <label for="overallPositive" >Solved Coding Challenge</label>
                 </div>
-              <% } else { %>
+              <% } else if (!assignment) { %>
                 <div class="popup-input">
                   <input type="checkbox" name="codingChallenge" id="codingChallenge" value="Coding Challenge">
                   <label for="overallPositive" >Solved Coding Challenge</label>
@@ -117,7 +117,9 @@ integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQV
 
         <div class="buttons block">
             <button class="update-btn" form="update-form" type="submit">Update</button>
-            <a class="delete-btn" id="delete"  data-id='<%= assignment._id %>'>Delete</a>
+            <% if (assignment) { %>
+              <a class="delete-btn" id="delete"  data-id='<%= assignment._id %>'>Delete</a>
+            <% } %>
         </div>
         <p id="delete-error"></p>
         <!-- <div id="note-entry"></div> -->

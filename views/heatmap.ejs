@@ -5,13 +5,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- fontawesome -->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
-integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-<link rel="stylesheet" href="/css/style.css">
-
-<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
-integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <!-- fontawesome -->
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+  integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+  integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/style.css">
 
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -51,6 +50,14 @@ integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQV
             <input type="checkbox" name="codingChallenge" value="Coding Challenge">
             <div class="icon-box">
               <i class="fa fa-code" aria-hidden="true"></i>
+            </div>
+          </label>
+        </li>
+        <li>
+          <label> 
+            <input type="checkbox" name="codingChallenge" value="Coding Challenge">
+            <div class="icon-box" form="express-form" type="submit">
+              <i>Save</i>
             </div>
           </label>
         </li>
@@ -156,30 +163,59 @@ integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQV
             <% shade = 'more' %>
           <% } %>
 
-          <!-- set class to .dayBox and .#; set id to #date_YYYY-MM-DD -->
-          <a href="/heatmap/edit/<%=date%>">
-          <div class="<%= `${dayObjectsInYear[date].day_of_year} dayBox ${shade}` %>" id="<%= 'date_' + date %>">
-
-            <!-- .dayBoxBubble .bubble_YYYY-MM-DD-->
-            <div class="dayBoxBubble <%= 'bubble_' + date %>">
-              <%= `${dayObjectsInYear[date].month_short} ${dayObjectsInYear[date].date}` %>
-              <%= `- ${dayObjectsInYear[date].tasks.length}` %>
-            </div>
-            
-
-            <!-- .dayBoxPointer .bubble_YYYY-MM-DD -->
-            <!-- <div class="dayBoxPointer <%= 'bubble_' + date %>">
-            </div> -->
-
-            <!-- .dateError .error_YYYY-MM-DD -->
-            <div class="dateError <%= 'error_' + date %>">
-              Date is in the future!
-            </div>
-            
-            <!-- .notes-indicator -->
-            <div class="notes-indicator">
-            </div>
-          </div></a>
+          <% if (new Date(date) <= new Date(today)) { %>
+            <a href="/heatmap/edit/<%=date%>">
+              <!-- set class to .dayBox and .#; set id to #date_YYYY-MM-DD -->
+              <div class="<%= `${dayObjectsInYear[date].day_of_year} dayBox ${shade}` %>" id="<%= 'date_' + date %>">
+  
+                <!-- .dayBoxBubble .bubble_YYYY-MM-DD-->
+                <div class="dayBoxBubble <%= 'bubble_' + date %>">
+                  <%= `${dayObjectsInYear[date].month_short} ${dayObjectsInYear[date].date}` %>
+                  <%= `- ${dayObjectsInYear[date].tasks.length}` %>
+                </div>
+                
+  
+                <!-- .dayBoxPointer .bubble_YYYY-MM-DD -->
+                <!-- <div class="dayBoxPointer <%= 'bubble_' + date %>">
+                </div> -->
+  
+                <!-- .dateError .error_YYYY-MM-DD -->
+                <div class="dateError <%= 'error_' + date %>">
+                  Date is in the future!
+                </div>
+                
+                <!-- .notes-indicator -->
+                <div class="notes-indicator">
+                </div>
+              </div>
+            </a>
+          <% } else { %>
+              <!-- set class to .dayBox and .#; set id to #date_YYYY-MM-DD -->
+              <div class="future <%= `${dayObjectsInYear[date].day_of_year} dayBox ${shade}` %>" id="<%= 'date_' + date %>">
+  
+                <!-- .dayBoxBubble .bubble_YYYY-MM-DD-->
+                <div class="dayBoxBubble <%= 'bubble_' + date %>">
+                  <%= `${dayObjectsInYear[date].month_short} ${dayObjectsInYear[date].date}` %>
+                  <%= `- ${dayObjectsInYear[date].tasks.length}` %>
+                </div>
+                
+  
+                <!-- .dayBoxPointer .bubble_YYYY-MM-DD -->
+                <!-- <div class="dayBoxPointer <%= 'bubble_' + date %>">
+                </div> -->
+  
+                <!-- .dateError .error_YYYY-MM-DD -->
+                <div class="dateError <%= 'error_' + date %>">
+                  Date is in the future!
+                </div>
+                
+                <!-- .notes-indicator -->
+                <div class="notes-indicator">
+                </div>
+              </div>
+            </a>
+          <% } %>
+          
 
           <!-- add Month label for the first saturday of each month -->
           <% if(dayObjectsInYear[date].day == 'Saturday') {%>

@@ -7,6 +7,8 @@ module.exports = {
             let today = new Date()
             let thisYear = today.getFullYear()
             let thisMonth = today.getMonth()
+            let thisDate = today.getDate()
+            let todayDate = `${thisYear}-${thisMonth}-${thisDate}`
             // console.log(`today: ${today}; thisYear: ${thisYear}; thisMonth: ${thisMonth}`)
             
             // let thisMonthName = today.toLocaleString('default', { month: 'long' })
@@ -110,7 +112,7 @@ module.exports = {
                 }   
             }
             console.log(`array length: ${allDatesInYear.length}; obj length: ${Object.keys(dayObjectsInYear).length}`)
-            res.render('heatmap.ejs', {allDatesInYear: allDatesInYear, dayObjectsInYear: dayObjectsInYear, user: req.user})
+            res.render('heatmap.ejs', {allDatesInYear: allDatesInYear, dayObjectsInYear: dayObjectsInYear, user: req.user, today: todayDate})
         } catch (err) {
             console.log(err)
         }

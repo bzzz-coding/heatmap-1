@@ -1,38 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/normalized.css">
-    <link rel="stylesheet" href="/css/style2.css">
-    <title>100devs Daily Assignments Heatmap</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,900&display=swap" rel="stylesheet"><link rel="stylesheet" href="/css/normalized.css">
+  <link rel="stylesheet" href="/css/style2.css">
+  <title>100devs Daily Assignments Heatmap</title>
 </head>
 
 <body>
-  <form id="express-form" action="/heatmap/add" method="POST">
-    <div class="selectContainer block">
-        <input type="checkbox" name="anki" id="anki" value="Anki">
-        <label for="overallPositive" >Studied Anki Flashcards</label>
-
-        <input type="checkbox" name="bank" id="bank" value="Bank">
-        <label for="overallPositive" >Practiced Interview Questions</label>
-
-        <input type="checkbox" name="codingChallenge" id="codingChallenge" value="Coding Challenge">
-        <label for="overallPositive" >Solved Coding Challenge</label>
-    </div>
-    <!-- <div class="notes-container">
-        <label for="notes">Optional notes:</label>
-        <textarea id="notes" name="notes" rows="5" cols="33" placeholder="What did you learn today? Any celebrations?"></textarea>
-    </div> -->
-    <button form="mood-otd" type="submit">Submit</button>
-  </form>
-
+    
   <div id="wrapper">
+
+    <form id="express-form" action="/heatmap/add" method="POST">
+      <div class="input-wrapper">
+        <label class="ef-label" for="anki">Studied Anki Flashcards
+          <input class="ef-input" type="checkbox" name="anki" id="anki" value="Anki" />
+          <span class="ef-span"></span>
+        </label>
+  
+        <label class="ef-label" for="bank">Practiced Interview Questions
+          <input class="ef-input" type="checkbox" name="bank" id="bank" value="Bank" />
+          <span class="ef-span"></span>
+        </label>
+  
+        <label class="ef-label" for="codingChallenge">Solved Coding Challenge
+          <input class="ef-input" type="checkbox" name="codingChallenge" id="codingChallenge" value="Coding Challenge" />
+          <span class="ef-span"></span>
+        </label>
+      </div>
+        
+      <button class="ef-btn" form="express-form" type="submit">Express Log Today's Assignments</button>
+    </form>
+  
       
     <header>
       <h1>
@@ -51,37 +55,40 @@
         <p id="pop-up-day"></p>
         <h2 id="pop-up-date"></h2>
         
-        <form id="mood-otd" action="/heatmap/add" method="POST">
-            <%# Date %>
+        <form id="update-form" action="/heatmap/add" method="POST">
             <label for="date">Choose date:</label>
             <input type="date" id="date" name="date"  ass="block"  value="" min="2022-01-01" max="" required>
             <div class="selectContainer block">
+              <div class="popup-input">
                 <input type="checkbox" name="anki" id="anki" value="Anki">
                 <label for="overallPositive" >Studied Anki Flashcards</label>
-
+              </div>
+              <div class="popup-input">
                 <input type="checkbox" name="bank" id="bank" value="Bank">
                 <label for="overallPositive" >Practiced Interview Questions</label>
-
+              </div>
+              <div class="popup-input">
                 <input type="checkbox" name="codingChallenge" id="codingChallenge" value="Coding Challenge">
                 <label for="overallPositive" >Solved Coding Challenge</label>
+              </div>
             </div>
-            <div class="notes-container">
+            <!-- <div class="notes-container">
                 <label for="notes">Optional notes:</label>
                 <textarea id="notes" name="notes" rows="5" cols="33" placeholder="What did you learn today? Any celebrations?"></textarea>
-            </div>
+            </div> -->
         </form>
-        <%# Button %>
+
         <div class="buttons block">
-            <button form="mood-otd" type="submit">Submit</button>
-            <button id="delete">Delete entry</button>
+            <button class="update-btn" form="update-form" type="submit">Update</button>
+            <button class="delete-btn" id="delete">Delete</button>
         </div>
         <p id="delete-error"></p>
-        <div id="note-entry"></div>
+        <!-- <div id="note-entry"></div> -->
       </section>
     </div>
       
     <!-- Mood display of year  -->
-    <section class="moodsForYear">
+    <section class="heatmap-section">
 
       <!-- Vertical Labels for Days of Week -->
       <div class="dayLabelsContainer">
@@ -100,11 +107,11 @@
 
           <% let shade %>
           <% if (dayObjectsInYear[date].total == 1) { %>
-            <% shade = 'negative' %>
+            <% shade = 'less' %>
           <% } else if (dayObjectsInYear[date].total == 2) { %>
-            <% shade = 'neutral' %>
+            <% shade = 'average' %>
           <% } else if (dayObjectsInYear[date].total == 3) { %>
-            <% shade = 'positive' %>
+            <% shade = 'more' %>
           <% } %>
 
           <!-- set class to .dayBox and .#; set id to #date_YYYY-MM-DD -->
@@ -119,8 +126,8 @@
             
 
             <!-- .dayBoxPointer .bubble_YYYY-MM-DD -->
-            <div class="dayBoxPointer <%= 'bubble_' + date %>">
-            </div>
+            <!-- <div class="dayBoxPointer <%= 'bubble_' + date %>">
+            </div> -->
 
             <!-- .dateError .error_YYYY-MM-DD -->
             <div class="dateError <%= 'error_' + date %>">
@@ -168,7 +175,7 @@
                 <p id="pop-up-day"></p>
                 <h2 id="pop-up-date"></h2>
                 
-                <form id="mood-otd" action="/motd" method="POST">
+                <form id="update-form" action="/motd" method="POST">
                     <%# Date %>
                     <label for="date">Choose date:</label>
                     <input type="date" id="date" name="date"  ass="block"  value="" min="2022-01-01" max="" required>
@@ -190,7 +197,7 @@
                 </form>
                 <%# Button %>
                 <div class="buttons block">
-                    <button form="mood-otd" type="submit">Submit</button>
+                    <button form="update-form" type="submit">Submit</button>
                     <button id="delete">Delete entry</button>
                 </div>
                 <p id="delete-error"></p>

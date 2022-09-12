@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/style2.css">
   <title>Heatmap</title>
   <style>
     body {
@@ -23,11 +24,31 @@
 
 
 <body>
+  
+  <div class="cbx">
+    <input id="cbx" type="checkbox"/>
+    <label for="cbx"></label>
+    <svg width="15" height="14" viewbox="0 0 15 14" fill="none">
+      <path d="M2 8.36364L6.23077 12L13 2"></path>
+    </svg>
+  </div>
+  <!-- Gooey-->
+  <h3>This is the svg</h3>
+  <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+    <defs>
+      <filter id="goo">
+        <fegaussianblur in="SourceGraphic" stddeviation="4" result="blur"></fegaussianblur>
+        <fecolormatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -7" result="goo"></fecolormatrix>
+        <feblend in="SourceGraphic" in2="goo"></feblend>
+      </filter>
+    </defs>
+  </svg>
+
   <div class="container">
     <button id="close" aria-label="Dismiss alert" type="button" data-close>
       <span aria-hidden="true">&times;</span>
   </button>
-    This is a heatmap
+    This is a blue heatmap
     <div id="chart"></div>
   </div>
 

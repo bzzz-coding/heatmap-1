@@ -22,20 +22,153 @@ clear: both;
 /*******************************************/
 
 body {
-  background-color: #12171D;
-  color: #CAD0D7;
-  font-family: 'Quicksand', sans-serif;
+  /* background-color: #12171D;
+  color: #CAD0D7; */
+  background-color: #EEE;
+  color: #3c4043;
+  font-family: 'Lato', sans-serif;
+}
+
+header h1 {
+  font-size: 3rem;
+  font-weight: 600;
+  background-image: linear-gradient(to left, rgb(29, 66, 134), rgb(162, 196, 245));
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
 }
 
 /******************************************
 /* LAYOUT
 /*******************************************/
-
+/* ======= Express Form ========== */
 #express-form {
-  display: block;
-  margin: 2% auto;
-  padding: 1% auto;
+  margin: 3% auto;
+  font-size: 1.2rem;
+}
+
+.ef-label {
+  position: relative; /* to contain absolute elements */
+  padding-left:30px; /* free space for custom checkbox */
+  cursor: pointer;
+}
+/* hide default checkbox  */
+.ef-label .ef-input[type=checkbox] {
+  position: absolute; /* prevent taking any space */
+  /* cross-browser hidingg */
+  /* opactiy: 0; */
+  width:0; 
+  height:0;
+}
+/* custom checkbox */
+.ef-label .ef-span {
+  position: absolute;
+  /* position to the free space in <label> */
+  top:0;
+  left:0;
+  width:20px; 
+  height:20px;
+  background-color: #ddd;
+  transition: .3s background-color; /* slight transition */
+}
+/* the check icon */
+.ef-label .ef-span:after {
+  content: "";
+  position: absolute;
+  display: none;
+  
+  /* check icon */
+  left: 6px;
+  top: 2px;
+  width: 4px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+.ef-label:hover .ef-span {
+  background-color: #ccc;
+}
+
+/**** Here's the trick ***/
+.ef-label .ef-input:checked ~ .ef-span {
+  background-color: #75A5FC;
+}
+.ef-label .ef-input:checked ~ .ef-span:after {
+  display:block;
+}
+
+/* ========== Express Form Button ========== */
+
+/* CSS */
+.ef-btn {
+  margin-top: 3%;
+  align-items: center;
+  appearance: none;
+  background-color: #fff;
+  border-radius: 24px;
+  border-style: none;
+  box-shadow: rgba(113, 124, 86, 0.247) 0 3px 5px -1px,rgba(0, 0, 0, 0.14) 0 6px 10px 0,rgba(0, 0, 0, 0.12) 0 1px 18px 0;
+  box-sizing: border-box;
+  color: #3c4043;
+  cursor: pointer;
+  display: inline-flex;
+  fill: currentcolor;
+  font-family: "Google Sans",Roboto,Arial,sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  height: 48px;
+  justify-content: center;
+  letter-spacing: .25px;
+  line-height: normal;
+  max-width: 100%;
+  overflow: visible;
+  padding: 2px 24px;
+  position: relative;
   text-align: center;
+  text-transform: none;
+  transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1),opacity 15ms linear 30ms,transform 270ms cubic-bezier(0, 0, .2, 1) 0ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: auto;
+  will-change: transform,opacity;
+  z-index: 0;
+}
+
+.ef-btn:hover {
+  background: #F6F9FE;
+  color: #174ea6;
+}
+
+.ef-btn:active {
+  box-shadow: 0 4px 4px 0 rgb(60 64 67 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%);
+  outline: none;
+}
+
+.ef-btn:focus {
+  outline: none;
+  border: 2px solid #4285f4;
+}
+
+.ef-btn:not(:disabled) {
+  box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+}
+
+.ef-btn:not(:disabled):hover {
+  box-shadow: rgba(60, 64, 67, .3) 0 2px 3px 0, rgba(60, 64, 67, .15) 0 6px 10px 4px;
+}
+
+.ef-btn:not(:disabled):focus {
+  box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+}
+
+.ef-btn:not(:disabled):active {
+  box-shadow: rgba(60, 64, 67, .3) 0 4px 4px 0, rgba(60, 64, 67, .15) 0 8px 12px 6px;
+}
+
+.ef-btn:disabled {
+  box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
 }
 
 /* wrapper */
@@ -53,16 +186,17 @@ body {
 
 @media screen and (max-width: 425px) {
   #wrapper {
-       min-height: 80vh;
-       min-width: 90vw;
+    min-height: 80vh;
+    min-width: 90vw;
   }
 }
 
-header, .moodsForYear {
+header, .heatmap-section {
+  margin: 1%;
   min-width: 100vw;
 }
 
-.moodsForYear, .dayLabelsContainer  {
+.input-wrapper, .heatmap-section, .dayLabelsContainer  {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -75,8 +209,13 @@ header, .moodsForYear {
   margin: 0 auto;
 }
 
+.input-wrapper {
+  align-items: flex-start;
+  height: 20%;
+}
+
 @media screen and (max-width: 425px) {
-  .moodsForYear {
+  .heatmap-section {
        flex-direction: row;
        height: 100%;
        width: 100%;
@@ -104,7 +243,8 @@ header, .moodsForYear {
 }
 
 .dayBox {
-  background-color: #1E2126;
+  /* background-color: #1E2126; */
+  background-color: #fff;
   border-radius: 10%;
   border: 1px solid rgba(128, 128, 128, 0.05);
   width: 15px;
@@ -113,14 +253,16 @@ header, .moodsForYear {
 }
 
 .dayBox:hover {
-  background-color: rgba(223, 223, 223, .2);
+  /* background-color: rgba(223, 223, 223, .2); */
+  background-color: rgba(106, 108, 109, 0.2);
   transition: all .5s ease-in-out;
   cursor: g;
 }
 
 /* Pop up box */
 .pop-up-container {
-  background-color: rgba(0, 0, 0, .4);
+  /* background-color: rgba(0, 0, 0, 0.4); */
+  background-color: rgba(13, 93, 244, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -148,9 +290,11 @@ header, .moodsForYear {
 }
 
 .pop-up {
-  background-color: rgba(0, 0, 0, .8);
-  border-radius: 5px;
-  box-shadow: 0 3px 20px rgba(255, 255, 255, .05);
+  /* background-color: rgba(6, 20, 47, 0.8); */
+  background-color: rgba(29, 66, 134, 0.8);
+  color: #EEE;
+  border-radius: 10px;
+  box-shadow: 0 3px 20px rgba(2, 18, 45, 0.3);
   padding: 2rem 3rem 3.5rem 3rem;
   width: 35vw;
   max-width: 100%;
@@ -160,20 +304,23 @@ header, .moodsForYear {
 /* Bubble */
 .dayBoxBubble {
   background-color: ivory;
-  color: black;
+  color: #4285f4; 
   position: absolute;
-  top: -2.1rem;
+  top: -2rem;
   left: -3rem;
   opacity: 0;
   pointer-events: none;
-  height: 1.6rem;
+  /* height: 1.8rem; */
   width: 7rem;
+  height: fit-content;
   padding: .35rem;
   border-radius: 5px;
   z-index: 3;
   text-align: center;
   font-size: .95rem;
 }
+
+/* ===== Not sure what .dayBoxPointer does */
 
 .dayBoxPointer {
 height: 10px;
@@ -189,13 +336,14 @@ position: relative;
 /* left: calc(0.5vw - 0px); */
 }
 
+
 .dateError {
-  background-color: orange;
+  background-color: rgb(255, 183, 49);
   color: rgb(45, 29, 0);
   border: 2px solid rgb(255, 183, 49);
+  border-radius: 5px;
   position: absolute;
   top: -4.25rem;
-  /* left: -5rem; */
   opacity: 0;
   pointer-events: none;
   height: 1.6rem;
@@ -209,28 +357,22 @@ position: relative;
 
 .block {
   margin: 1rem auto;
+  width: fit-content;
 }
 
+.popup-input {
+  text-align: left;
+}
+
+/* 
 .selectContainer label {
   margin-left: .25rem;
   margin-right: 1rem;
 }
 
-.notes-container {
-  margin: 2rem auto 0 auto;
-}
-
 .notes-container label {
   display: block;
   margin: .25rem 0;
-}
-
-textarea {
-  width: 100%;
-}
-
-.notes-container * {
-  text-align: left;
 }
 
 .buttons.block {
@@ -239,11 +381,26 @@ textarea {
 
 .buttons * {
   margin: .25rem;
-}
+} */
 
-#note-entry {
+/* ===== textarea/note ===== */
+
+
+/* .notes-container {
+  margin: 2rem auto 0 auto;
+} */
+
+/* textarea {
+  width: 100%;
+} */
+
+/* .notes-container * {
   text-align: left;
-}
+} */
+
+/* #note-entry {
+  text-align: left;
+} */
 
 /******************************************
 /* ADDITIONAL STYLES
@@ -263,17 +420,17 @@ h2 {
   font-size: 1.25rem;
 }
 
-.positive {
+.more {
   background-color: rgba(117, 165, 252, .85);
   border: 1px solid rgba(128, 128, 128, 0.05);
 }
 
-.neutral {
+.average {
   background-color: rgba(117, 165, 252, .45);
   border: 1px solid rgba(128, 128, 128, 0.05);
 }
 
-.negative {
+.less {
   background-color: rgba(117, 165, 252, .25);
   border: 1px solid rgba(128, 128, 128, 0.05);
 }
@@ -348,4 +505,157 @@ textarea {
 
 #delete-error {
   color: orange;
+}
+
+
+
+/* ===================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #ebf5fc;
+}
+ul {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  border-radius: 10px;
+  padding: 20px;
+  width: 240px;
+  background: #ebf5fc;
+  box-shadow: -2px -2px 5px rgba(255, 255, 255, 1), 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+ul li {
+  position: relative;
+  list-style: none;
+  text-align: center;
+  margin: 15px;
+}
+ul li label {
+  position: relative;
+  cursor: pointer;
+}
+ul li label input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+}
+ul li label :checked ~ .icon-box {
+  box-shadow: inset -2px -2px 5px rgba(255, 255, 255, 1), inset 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+ul li label :checked ~ .icon-box .fa {
+  transform: scale(0.95);
+}
+ul li label .icon-box {
+  width: 60px;
+  height: 60px;
+  background: #ebf5fc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: -2px -2px 5px rgba(255, 255, 255, 1), 3px 3px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+ul li label .icon-box .fa {
+  font-size: 30px;
+  color: #6a9bd8;
+}
+/* --------Social Icons-------- */
+/* Color Variables */
+/* Social Icon Mixin */
+.social-icons {
+  display: flex;
+  position: absolute;
+  bottom: 25px;
+  right: 25px;
+}
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 40px;
+  height: 40px;
+  margin: 0 0.7rem;
+  border-radius: 50%;
+  cursor: pointer;
+  font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  font-size: 1.5rem;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+.social-icon:hover {
+  color: #fff;
+}
+.social-icon:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+  transform: translate(-50%, -150%);
+}
+.social-icon:active {
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5) inset;
+}
+.social-icon--twitter {
+  background: #2b97f1;
+  color: #fff;
+}
+.social-icon--twitter .tooltip {
+  background: #2b97f1;
+  color: currentColor;
+}
+.social-icon--twitter .tooltip:after {
+  border-top-color: #2b97f1;
+}
+.social-icon--codepen {
+  background: #000;
+  color: #fff;
+}
+.social-icon--codepen .tooltip {
+  background: #000;
+  color: currentColor;
+}
+.social-icon--codepen .tooltip:after {
+  border-top-color: #000;
+}
+.social-icon i {
+  position: relative;
+  top: 1px;
+}
+/* Tooltips */
+.tooltip {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  padding: 0.4rem 0.6rem;
+  border-radius: 40px;
+  font-size: 0.4rem;
+  font-weight: bold;
+  opacity: 0;
+  pointer-events: none;
+  text-transform: uppercase;
+  transform: translate(-50%, -100%);
+  transition: all 0.3s ease;
+  z-index: 1;
+}
+.tooltip:after {
+  display: block;
+  position: absolute;
+  bottom: 1px;
+  left: 50%;
+  width: 0;
+  height: 0;
+  content: "";
+  border: solid;
+  border-width: 10px 10px 0 10px;
+  border-color: transparent;
+  transform: translate(-50%, 100%);
 }

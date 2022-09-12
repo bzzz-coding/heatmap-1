@@ -6,7 +6,7 @@ module.exports = {
         res.render('index.ejs')
     },
     getTest: (req, res) => {
-        res.render('test2.ejs')
+        res.render('test.ejs')
     },
     getCalendar: (req, res) => {
         res.render('heatmapCalendar.ejs')

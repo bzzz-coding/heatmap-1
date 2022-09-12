@@ -12,7 +12,7 @@ router.get('/logout', authController.logout)
 router.get('/signup', authController.getSignup)
 router.post('/signup', authController.postSignup)
 
-// router.get('/test', homeController.getTest)
+router.get('/test', homeController.getTest)
 // router.get('/calendar', homeController.getCalendar)
 
 module.exports = router

@@ -22,9 +22,9 @@ integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQV
 </head>
 
 <body>
-  <div class="signout">
+  <!-- <div class="signout">
     <a href="/logout">Sign Out</a>
-  </div>
+  </div> -->
     
   <div id="wrapper">
 
@@ -46,22 +46,24 @@ integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQV
       </div> -->
         
       <!-- <button class="ef-btn" form="express-form" type="submit">Express Log Today's Assignments</button> -->
-    </form>
+    
   
       
-    <header>
+    <!-- <header>
       <h1>
         <%= user.userName %>'s 100devs Heatmap
       </h1>
-    </header>
+    </header> -->
 
     <!-- Pop-up -->
     <div class="pop-up-container show">
       <section class="pop-up">
         <div class="close-container">
+          <a href="/heatmap">
             <button id="close" aria-label="Dismiss alert" type="button" data-close>
                 <span aria-hidden="true">&times;</span>
             </button>
+          </a>
         </div>
         <p id="pop-up-day"></p>
         <h2 id="pop-up-date"></h2>
@@ -71,36 +73,36 @@ integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQV
             
             <input type="date" name="date" ass="block"  value="<%=date%>" min="2022-01-01" max="<%=today%>" required>
             <div class="selectContainer block">
-              <% if (assignment && assignment.completed !== null && assignment.completed.includes('Anki')) { %>
+              <% if (assignment && assignment.completed && assignment.completed.includes('Anki')) { %>
                 <div class="popup-input">
                   <input type="checkbox" name="anki" id="anki" value="Anki" checked>
                   <label for="overallPositive" >Studied Anki Flashcards</label>
                 </div>
-              <% } else if (!assignment) { %>
+              <% } else { %>
                 <div class="popup-input">
                   <input type="checkbox" name="anki" id="anki" value="Anki">
                   <label for="overallPositive" >Studied Anki Flashcards</label>
                 </div>
               <% } %>
 
-              <% if (assignment && assignment.completed !== null && assignment.completed.includes('Bank')) { %>
+              <% if (assignment && assignment.completed && assignment.completed.includes('Bank')) { %>
                 <div class="popup-input">
                   <input type="checkbox" name="bank" id="bank" value="Bank" checked>
                   <label for="overallPositive" >Practiced Interview Questions</label>
                 </div>
-              <% } else if (!assignment) { %>
+              <% } else { %>
                 <div class="popup-input">
                   <input type="checkbox" name="bank" id="bank" value="Bank">
                   <label for="overallPositive" >Practiced Interview Questions</label>
                 </div>
               <% } %>
 
-              <% if (assignment && assignment.completed !== null && assignment.completed.includes('Coding Challenge')) { %>
+              <% if (assignment && assignment.completed && assignment.completed.includes('Coding Challenge')) { %>
                 <div class="popup-input">
                   <input type="checkbox" name="codingChallenge" id="codingChallenge" value="Coding Challenge" checked>
                   <label for="overallPositive" >Solved Coding Challenge</label>
                 </div>
-              <% } else if (!assignment) { %>
+              <% } else { %>
                 <div class="popup-input">
                   <input type="checkbox" name="codingChallenge" id="codingChallenge" value="Coding Challenge">
                   <label for="overallPositive" >Solved Coding Challenge</label>

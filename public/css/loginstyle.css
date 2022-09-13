@@ -1,0 +1,84 @@
+
+
+:root {
+	/* --primary: #6441a5; */
+  --primary: #6a9bd8;
+	--white: #ffffff;
+	--greyLight-1: #e4ebf5;
+	--greyLight-2: #c8d0e7;
+	--shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2),
+		-0.2rem -0.2rem 0.5rem var(--white);
+	--inner-shadow: inset 0.2rem 0.2rem 0.5rem var(--greyLight-2),
+		inset -0.2rem -0.2rem 0.5rem var(--white);
+}
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background: var(--greyLight-1);
+}
+
+form {
+  display: flex;
+  width: fit-content;
+  margin: 10% auto;
+  flex-flow: column;
+  gap: 10px;
+}
+
+
+.container {
+	display: flex;
+	align-items: center;
+}
+
+input {
+	width: 80vmin;
+	height: 15vmin;
+	border: none;
+	border-radius: 1rem;
+	outline: none;
+	font-size: 5vmin;
+	font-weight: bold;
+	padding: 0 4vmin;
+	box-shadow: var(--inner-shadow);
+	background: var(--greyLight-1);
+	color: var(--primary);
+	caret-color: var(--primary);
+}
+
+svg {
+	width: 12.5vmin;
+	height: 12.5vmin;
+	border-radius: 0.5rem;
+	box-shadow: var(--shadow);
+	margin: 0 4vmin;
+	cursor: pointer;
+}
+
+.login-btn {
+  box-shadow: var(--shadow);
+}
+
+svg path {
+	transition: all 0.25s 0.25s ease, all 0.25s ease;
+	transform-origin: center center;
+	stroke: var(--primary);
+}
+svg circle {
+	transition: all 0.25s ease, all 0.25s 0.25s ease;
+	transform-origin: center center;
+	fill: var(--primary);
+}
+svg.close circle {
+	transition: all 0.25s 0.25s ease, all 0.25s ease;
+	transform: scale(0);
+}
+svg.close #top-eye-part {
+	transition: all 0.25s ease, all 0.25s 0.25s ease;
+	d: path("M10,50 Q50,110 90,50");
+}

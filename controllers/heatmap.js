@@ -5,9 +5,20 @@ module.exports = {
         // console.log(req.user)
         try {
             let today = new Date()
+            
             let thisYear = today.getFullYear()
-            let thisMonth = today.getMonth()
+            let thisMonth = today.getMonth() + 1
             let thisDate = today.getDate()
+
+            if (thisDate < 10) {
+                thisDate = '0' + thisDate;
+             }
+             
+             if (thisMonth < 10) {
+                thisMonth = '0' + thisMonth;
+             } 
+            
+           
             let todayDate = `${thisYear}-${thisMonth}-${thisDate}`
             // console.log(`today: ${today}; thisYear: ${thisYear}; thisMonth: ${thisMonth}`)
             
@@ -24,29 +35,29 @@ module.exports = {
             let startYear = thisYear
             let startMonth = thisMonth - 9
 
-            if (thisMonth <= 9) {
-                startMonth = 2 + thisMonth
+            if (thisMonth < 9) {
+                startMonth = 3 + thisMonth
                 startYear = thisYear - 1
             }
 
-            let firstDay = new Date(startYear, startMonth, 0)
+            let firstDay = new Date(startYear, startMonth - 1, 0)
             if (firstDay.getDay() !== 0) {
-                firstDay.setDate(firstDay.getDate() - 6 + firstDay.getDay())
+                firstDay.setDate(firstDay.getDate() - firstDay.getDay())
             }
             // console.log(`firstDay: ${firstDay}`)
             
         
-            let nextMonth = thisMonth + 1
-            let endYear = thisYear
-            if (thisMonth == 11) {
-                nextMonth = 0
-                endYear = thisYear + 1
-            }
-            let lastDay = new Date(endYear, nextMonth, 6)
-            if (lastDay.getDay() !== 6) {
-                lastDay = new Date(endYear, nextMonth, 12 - lastDay.getDay())
-            }
-            // console.log(`lastDay: ${lastDay}`)
+            // let nextMonth = thisMonth + 1
+            // let endYear = thisYear
+            // if (thisMonth == 11) {
+            //     nextMonth = 0
+            //     endYear = thisYear + 1
+            // }
+            // let lastDay = new Date(endYear, nextMonth, 6)
+            // if (lastDay.getDay() !== 6) {
+            //     lastDay = new Date(endYear, nextMonth, 12 - lastDay.getDay())
+            // }
+            // // console.log(`lastDay: ${lastDay}`)
 
 
             // Loop for all days in the year for diplay on boxes, format short month name and date
@@ -56,7 +67,7 @@ module.exports = {
             let dayCounter = 1
 
         // format days and months to match calendar values
-        for (let d = firstDay; d <= lastDay; d.setDate(d.getDate() + 1)) {
+        for (let d = firstDay; d <= today; d.setDate(d.getDate() + 1)) {
 
             let year = d.getFullYear()
 
@@ -111,7 +122,7 @@ module.exports = {
                     // console.log(dayObjectsInYear[date])
                 }   
             }
-            console.log(`array length: ${allDatesInYear.length}; obj length: ${Object.keys(dayObjectsInYear).length}`)
+            console.log(`array length: ${allDatesInYear.length}; obj length: ${Object.keys(dayObjectsInYear).length}; today's date: ${todayDate}`)
             res.render('heatmap.ejs', {allDatesInYear: allDatesInYear, dayObjectsInYear: dayObjectsInYear, user: req.user, today: todayDate})
         } catch (err) {
             console.log(err)
@@ -120,7 +131,7 @@ module.exports = {
 
     getEdit: async (req, res) => {
         const date = req.params.date
-        const today = utc = new Date().toJSON().slice(0,10)
+        const today = new Date().toJSON().slice(0,10)
         console.log(date)
         console.log(today)
         try {
@@ -136,12 +147,34 @@ module.exports = {
     },
 
     postAssignment: async (req, res) => {
-        const date = req.body.date || Date.now()
-        console.log(date)
+        let date
+        if (req.body.date) {
+            date = req.body.date
+        } else {
+            let today = new Date()
+            
+            let thisYear = today.getFullYear()
+            let thisMonth = today.getMonth() == 11 ? 1 : today.getMonth() + 1
+       
+            let thisDate = today.getDate()
+
+            if (thisDate < 10) {
+                thisDate = '0' + thisDate;
+             }
+             
+             if (thisMonth < 10) {
+                thisMonth = '0' + thisMonth;
+             } 
+            let todayDate = `${thisYear}-${thisMonth}-${thisDate}`
+            date = todayDate
+            
+        }
+     
         let checked = []
         for (let value of [req.body.anki, req.body.bank, req.body.codingChallenge]) {
             if (value) checked.push(value)
         }
+        console.log(`date: ${date}, checked: ${checked}`)
         try {
             // using the Assignment model based on the schema, create a new todo item
             await Assignment.findOneAndUpdate({
@@ -156,7 +189,7 @@ module.exports = {
                 upsert: true
             })
             console.log('Assignment has been added!')
-            res.redirect('/')
+            res.redirect('/heatmap')
         } catch (err) {
             console.log(err)
         }

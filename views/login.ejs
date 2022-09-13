@@ -3,16 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- fontawesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
-    integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/normalized.css">
-    <link rel="stylesheet" href="/css/style2.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+
+
+    <link rel="stylesheet" href="/css/loginstyle.css">
     <title>100devs Daily Assignments Heatmap</title>
     
     <title>Document</title>
@@ -30,10 +24,52 @@
     <% } %>
 
     <!-- the method specifies that this is a post request at '/login' path(route) -->
+    <!-- <form action="/login" method="POST">
+
+        <div class="container email-container">
+            <input type="email" name="email" placeholder="email" />
+        </div>
+
+        <div class="container pw-container">
+            <input class="pw-input" name="password" type="password" placeholder="password" />
+            <svg class="close" viewBox="0 0 100 100">
+                <path id="top-eye-part" d="M10,50 Q50,-10 90,50" fill="none" stroke-width="5"></path>
+                <path id="bottom-eye-part" d="M10,50 Q50,110 90,50" fill="none" stroke-width="5"></path>
+                <circle cx="50" cy="50" r="10" fill="black"></circle>
+            </svg>
+        </div>
+
+       <div class="container ">
+            <input class="login-btn" type="submit">
+       </div>
+        
+    </form> -->
+    
+    <!-- the method specifies that this is a post request at '/login' path(route) -->
     <form action="/login" method="POST">
-        <input type="email" name="email" placeholder="Email">
-        <input type="password" name="password" placeholder="Password">
-        <input type="submit">
+        <div>
+            <input type="email" name="email" placeholder="Email">
+        </div>
+        
+        <div class="container pw-container">
+            <input class="pw-input" type="password" name="password" placeholder="Password"> 
+            <svg class="close" viewBox="0 0 100 100">
+                <path id="top-eye-part" d="M10,50 Q50,-10 90,50" fill="none" stroke-width="5"></path>
+                <path id="bottom-eye-part" d="M10,50 Q50,110 90,50" fill="none" stroke-width="5"></path>
+                <circle cx="50" cy="50" r="10" fill="black"></circle>
+            </svg>
+        </div>
+
+        <div class="container ">
+            <input class="login-btn" type="submit">
+       </div>
+        
     </form>
+
+   
+
+    
+
+    <script src="/js/login.js"></script>
 </body>
 </html>

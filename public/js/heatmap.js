@@ -161,4 +161,4 @@ async function deleteEntry() {
   }
 }
 
-console.log(todayFormatted > '2022-07-03')
+

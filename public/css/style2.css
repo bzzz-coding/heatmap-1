@@ -36,6 +36,7 @@ header h1 {
   color: transparent;
   background-clip: text;
   -webkit-background-clip: text;
+  margin-bottom: 3%;
 }
 
 /******************************************
@@ -43,7 +44,7 @@ header h1 {
 /*******************************************/
 /* ======= Express Form ========== */
 #express-form {
-  margin: 3% auto;
+  margin: 1% auto;
   font-size: 1.2rem;
 }
 
@@ -498,7 +499,7 @@ ul li label :checked ~ .icon-box .fa {
   transform: scale(0.95);
 }
 ul li label .icon-box {
-  width: 60px;
+  width: 120px;
   height: 60px;
   background: #ebf5fc;
   display: flex;
@@ -508,18 +509,38 @@ ul li label .icon-box {
   border-radius: 10px;
 }
 
-ul li label .btn-text{
+
+
+.signout-container {
+  margin-left: auto;
+}
+
+.signout {
+  width: 120px;
+  height: 60px;
+  background: #ebf5fc;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: -2px -2px 5px rgba(255, 255, 255, 1), 3px 3px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  color: #6a9bd8;
+}
+
+ul li label .btn-text {
   width: 180px;
 }
 
-.btn-text {
+.btn-text{
   color: #6a9bd8;
   font-size: 20px;
 }
 
 ul li label .icon-box .fa {
-  font-size: 30px;
+  font-size: 20px;
   color: #6a9bd8;
+  font-family: 'Lato', sans-serif;;
 }
 
 .quick-btn {
@@ -531,3 +552,4 @@ ul li label .icon-box .fa {
 	cursor: pointer;
 	outline: inherit;
 }
+

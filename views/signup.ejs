@@ -4,12 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- fontawesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
-    integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-    <link rel="stylesheet" href="/css/style.css">
     
-    <title>Document</title>
+    <link rel="stylesheet" href="/css/loginstyle.css">
+    <title>100devs Daily Assignments Heatmap</title>
 </head>
 <body>
     <% if (locals.messages.errors) { %>
@@ -17,12 +14,49 @@
             <div class="alert alert-danger"><%= el.msg %></div>
         <% }) %>    
     <% } %>
-    <form action="/signup" method="POST">
+    <!-- <form action="/signup" method="POST">
         <input type="text" name="userName" placeholder="User Name">
         <input type="email" name="email" placeholder="Email">
         <input type="password" name="password" placeholder="Password">
         <input type="password" name="confirmPassword" placeholder="Confirm Password">
         <input type="submit">
+    </form> -->
+
+    <form action="/signup" method="POST">
+        <div>
+            <input type="text" name="userName" placeholder="User Name">
+        </div>
+        <div>
+            <input type="email" name="email" placeholder="Email">
+        </div>
+        
+        <div class="container pw-container">
+            <input class="pw-input1" type="password" name="password" placeholder="Password"> 
+            <svg class="close svg1" viewBox="0 0 100 100">
+                <path id="top-eye-part" d="M10,50 Q50,-10 90,50" fill="none" stroke-width="5"></path>
+                <path id="bottom-eye-part" d="M10,50 Q50,110 90,50" fill="none" stroke-width="5"></path>
+                <circle cx="50" cy="50" r="10" fill="black"></circle>
+            </svg>
+        </div>
+        <div class="container pw-container">
+            <input class="pw-input2" type="password" name="confirmPassword" placeholder="Confirm Password"> 
+            <svg class="close svg2" viewBox="0 0 100 100">
+                <path id="top-eye-part" d="M10,50 Q50,-10 90,50" fill="none" stroke-width="5"></path>
+                <path id="bottom-eye-part" d="M10,50 Q50,110 90,50" fill="none" stroke-width="5"></path>
+                <circle cx="50" cy="50" r="10" fill="black"></circle>
+            </svg>
+        </div>
+
+        <div class="container ">
+            <input class="login-btn" type="submit">
+       </div>
+        
     </form>
+
+   
+
+    
+
+    <script src="/js/login.js"></script>
 </body>
 </html>

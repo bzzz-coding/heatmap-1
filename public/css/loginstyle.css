@@ -37,12 +37,12 @@ form {
 }
 
 input {
-	width: 80vmin;
-	height: 15vmin;
+	width: 40vmin;
+	height: 10vmin;
 	border: none;
 	border-radius: 1rem;
 	outline: none;
-	font-size: 5vmin;
+	font-size: 3vmin;
 	font-weight: bold;
 	padding: 0 4vmin;
 	box-shadow: var(--inner-shadow);
@@ -52,8 +52,8 @@ input {
 }
 
 svg {
-	width: 12.5vmin;
-	height: 12.5vmin;
+	width: 8vmin;
+	height: 8vmin;
 	border-radius: 0.5rem;
 	box-shadow: var(--shadow);
 	margin: 0 4vmin;
@@ -64,21 +64,21 @@ svg {
   box-shadow: var(--shadow);
 }
 
-svg path {
+.svg1 path, .svg2 path {
 	transition: all 0.25s 0.25s ease, all 0.25s ease;
 	transform-origin: center center;
 	stroke: var(--primary);
 }
-svg circle {
+.svg1 circle, .svg2 circle {
 	transition: all 0.25s ease, all 0.25s 0.25s ease;
 	transform-origin: center center;
 	fill: var(--primary);
 }
-svg.close circle {
+.svg1.close circle, .svg2.close circle {
 	transition: all 0.25s 0.25s ease, all 0.25s ease;
 	transform: scale(0);
 }
-svg.close #top-eye-part {
+.svg1.close #top-eye-part, .svg2.close #top-eye-part {
 	transition: all 0.25s ease, all 0.25s 0.25s ease;
 	d: path("M10,50 Q50,110 90,50");
 }

@@ -1,9 +1,19 @@
 
-const svg = document.querySelector("svg");
-const pwInput = document.querySelector(".pw-input");
-svg.addEventListener("click", function () {
-	this.classList.toggle("close");
+const svg1 = document.querySelector(".svg1")
+const pwInput1 = document.querySelector(".pw-input1")
+svg1.addEventListener("click", function () {
+	this.classList.toggle("close")
 	setTimeout(() => {
-		pwInput.type = pwInput.type === "password" ? "text" : "password";
-	}, 125);
-});
+		pwInput1.type = pwInput1.type === "password" ? "text" : "password";
+	}, 125)
+})
+
+
+const svg2 = document.querySelector(".svg2")
+const pwInput2 = document.querySelector(".pw-input2")
+svg2.addEventListener("click", function () {
+	this.classList.toggle("close")
+	setTimeout(() => {
+		pwInput2.type = pwInput2.type === "password" ? "text" : "password";
+	}, 125)
+})

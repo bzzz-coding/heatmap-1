@@ -48,58 +48,6 @@ header h1 {
   font-size: 1.2rem;
 }
 
-.ef-label {
-  position: relative; /* to contain absolute elements */
-  padding-left:30px; /* free space for custom checkbox */
-  cursor: pointer;
-}
-/* hide default checkbox  */
-.ef-label .ef-input[type=checkbox] {
-  position: absolute; /* prevent taking any space */
-  /* cross-browser hidingg */
-  /* opactiy: 0; */
-  width:0; 
-  height:0;
-}
-/* custom checkbox */
-.ef-label .ef-span {
-  position: absolute;
-  /* position to the free space in <label> */
-  top:0;
-  left:0;
-  width:20px; 
-  height:20px;
-  background-color: #ddd;
-  transition: .3s background-color; /* slight transition */
-}
-/* the check icon */
-.ef-label .ef-span:after {
-  content: "";
-  position: absolute;
-  display: none;
-  
-  /* check icon */
-  left: 6px;
-  top: 2px;
-  width: 4px;
-  height: 10px;
-  border: solid white;
-  border-width: 0 3px 3px 0;
-  transform: rotate(45deg);
-}
-.ef-label:hover .ef-span {
-  background-color: #ccc;
-}
-
-/**** Here's the trick ***/
-.ef-label .ef-input:checked ~ .ef-span {
-  background-color: #75A5FC;
-}
-.ef-label .ef-input:checked ~ .ef-span:after {
-  display:block;
-}
-
-
 /* wrapper */
 #wrapper {
   display: flex;
@@ -129,9 +77,8 @@ header, .heatmap-section {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  gap: .125rem;
+  /* gap: .125rem; */
   height: 180px;
-  /* width: 90%; */
   justify-content: flex-end;
   justify-content: flex-start;
 
@@ -162,7 +109,7 @@ header, .heatmap-section {
 }
 
 .dayLabel {
-  height: 15px;
+  height: 20px;
   margin-right: .55rem;
 }
 
@@ -173,21 +120,21 @@ header, .heatmap-section {
 
 .dayLabel, .monthLabel {
   font-size: .85rem;
+  color: #75A5FC;
 }
 
 .dayBox {
   /* background-color: #1E2126; */
   background-color: #fff;
-  border-radius: 10%;
+  border-radius: 15%;
   border: 1px solid rgba(128, 128, 128, 0.05);
-  width: 15px;
-  height: 15px;
+  width: 20px;
+  height: 20px;
   position: relative;
   align-self: start;
 }
 
 .dayBox:hover {
-  /* background-color: rgba(223, 223, 223, .2); */
   background-color: rgba(106, 108, 109, 0.2);
   transition: all .5s ease-in-out;
   cursor: g;
@@ -195,7 +142,6 @@ header, .heatmap-section {
 
 /* Pop up box */
 .pop-up-container {
-  /* background-color: rgba(0, 0, 0, 0.4); */
   background-color: rgba(13, 93, 244, 0.4);
   display: flex;
   align-items: center;
@@ -237,56 +183,22 @@ header, .heatmap-section {
 
 /* Bubble */
 .dayBoxBubble {
-  background-color: ivory;
-  color: #4285f4; 
+  background-color: #75A5FC;
+  color: #fff;
+  /* color: #4285f4;  */
   position: absolute;
   top: -2rem;
   left: -3rem;
   opacity: 0;
   pointer-events: none;
   /* height: 1.8rem; */
-  width: 7rem;
+  width: 6rem;
   height: fit-content;
   padding: .35rem;
   border-radius: 5px;
   z-index: 3;
   text-align: center;
   font-size: .95rem;
-}
-
-/* ===== Not sure what .dayBoxPointer does */
-
-.dayBoxPointer {
-height: 10px;
-width: 10px;
-background: ivory;
-margin: 0 auto;
-transform: rotate(45deg);
-border-radius: 0 0 2px 0;
-margin-top: -15px;
-position: relative;
-  opacity: 0;
-  pointer-events: none;
-/* left: calc(0.5vw - 0px); */
-}
-
-
-.dateError {
-  background-color: rgb(255, 183, 49);
-  color: rgb(45, 29, 0);
-  border: 2px solid rgb(255, 183, 49);
-  border-radius: 5px;
-  position: absolute;
-  top: -4.25rem;
-  opacity: 0;
-  pointer-events: none;
-  height: 1.6rem;
-  width: 10rem;
-  padding: .15rem;
-  z-index: 3;
-  text-align: center;
-  font-size: .85rem;
-  left: calc(0.5vw - 5rem);
 }
 
 .block {
@@ -298,47 +210,7 @@ position: relative;
   text-align: left;
 }
 
-/* 
-.selectContainer label {
-  margin-left: .25rem;
-  margin-right: 1rem;
-}
-
-.notes-container label {
-  display: block;
-  margin: .25rem 0;
-}
-
-.buttons.block {
-  margin-top: 2rem;
-}
-
-.buttons * {
-  margin: .25rem;
-} */
-
-/* ===== textarea/note ===== */
-
-
-/* .notes-container {
-  margin: 2rem auto 0 auto;
-} */
-
-/* textarea {
-  width: 100%;
-} */
-
-/* .notes-container * {
-  text-align: left;
-} */
-
-/* #note-entry {
-  text-align: left;
-} */
-
-/******************************************
-/* ADDITIONAL STYLES
-/*******************************************/
+/* ADDITIONAL STYLES */
 
 h1 {
   text-align: center;
@@ -356,29 +228,20 @@ h2 {
 
 .more {
   background-color: rgba(117, 165, 252, .85);
-  border: 1px solid rgba(128, 128, 128, 0.05);
+  border: 1px solid rgba(128, 128, 128, 0.15);
 }
 
 .average {
   background-color: rgba(117, 165, 252, .45);
-  border: 1px solid rgba(128, 128, 128, 0.05);
+  border: 1px solid rgba(128, 128, 128, 0.15);
 }
 
 .less {
   background-color: rgba(117, 165, 252, .25);
-  border: 1px solid rgba(128, 128, 128, 0.05);
+  /* border: 1px solid rgba(128, 128, 128, 0.05); */
+  border: 1px solid rgba(128, 128, 128, 0.15);
 }
 
-.notes-indicator.show {
-  width: 5px;
-  height: 5px;
-  background-color: rgba(212, 227, 255, 0.6);
-  filter: drop-shadow(0 0 0.075rem rgb(65, 99, 162));
-  border-radius: 50%;
-  position: absolute;
-  bottom: .045rem;
-  right: .045rem;
-}
 
 .close-container {
   text-align: right;
@@ -386,13 +249,13 @@ h2 {
   padding: 0;
 }
 
-#close {
+/* #close {
   background-color: rgba(255, 255, 255, .1);
   border-radius: 1px;
   color: rgba(255, 255, 255, .6);
   border: 0px solid red;
   margin: 0;
-}
+} */
 
 #close:hover {
   background-color: rgba(255, 255, 255, .2);

@@ -15,10 +15,6 @@ if (month < 10) {
 
 let todayFormatted = `${year}-${month}-${day}`
 
-// // setting max date as today
-// const setDate = document.querySelector('#date')
-// setDate.setAttribute('max', todayFormatted);
-// setDate.setAttribute('value', todayFormatted);
 
 const dayBox = document.querySelectorAll('.dayBox')
 const popUpContainer = document.querySelector('.pop-up-container')
@@ -50,96 +46,19 @@ dayBox.forEach(box => box.addEventListener('mouseout', () => {
   dateErrorBubble.classList.remove('show')
 }))
 
-// /* POP UP */
 
-// // Click box to reveal pop up box
-// // When you click on any of the boxes,
-// dayBox.forEach(box => box.addEventListener('click', () => {
-//   console.log('clicked')
-//   // isolate number from class name to target index in yearObj
-//   let dayBoxDate = box.className.split(' ').filter(x => Number(x) || x == '0').toString()
-//   console.log(dayBoxDate)
-//   // define the date from the box's id ('date_' + YYYY-MM-DD)
-//   let idBoxClicked = box.id.slice(5)
-//   // set the value of date picker to the date clicked
-//   setDate.setAttribute('value', idBoxClicked);
-//   let dateErrorBubble = document.querySelector(`.error_${idBoxClicked}`)
-//   // if date is today or in the past, show pop up box
-//   if (idBoxClicked <= todayFormatted) {
-//     // add class 'show' pop up box
-//     popUpContainer.classList.add('show');
-//     // add day of the week in pop up box
-//     document.querySelector('#pop-up-day').textContent = `${yearObj[dayBoxDate].day}`
-//     // add month, date, year in pop up box
-//     document.querySelector('#pop-up-date').textContent = `${yearObj[dayBoxDate].month_long} ${yearObj[dayBoxDate].date}, ${yearObj[dayBoxDate].year}`
-//     // // display notes
-//     // fetch('/motd')
-//     // .then(res => res.json())
-//     // .then(data => {
-//     //     let clickedEntry = data.find(entry => entry.date == idBoxClicked)
-//     //     console.log(data)
-//     //     let emptyNotes = ''
-//     //         document.querySelector('#note-entry').textContent = clickedEntry.notes ? clickedEntry.notes : emptyNotes
-//     //     // console.log(data.map(entry => entry.date == idBoxClicked ? entry.notes : ''))
-//     // })
 
-//     // if date is in the future,
-//   } else if (idBoxClicked > todayFormatted) {
-//     // show date error
-//     dateErrorBubble.classList.add('show');
-//   }
-// }))
-
-// // POP UP BOX
-// // Change displayed date header when user changes input value
-// setDate.addEventListener('change', () => {
-//     let selectedDateObj = yearObj.find(x => x.full_date === `${setDate.value}`)
-//     // add day of the week in pop up box
-//     document.querySelector('#pop-up-day').textContent = `${selectedDateObj.day}`
-//     // add month, date, year in pop up box
-//     document.querySelector('#pop-up-date').textContent = `${selectedDateObj.month_long} ${selectedDateObj.date}, ${selectedDateObj.year}`
-// })
 
 // When you click the X in the pop up box,
-close.addEventListener('click', () => {
-  // remove class 'show' to hide pop up box
-  popUpContainer.classList.remove('show')
-  // // reset delete error message
-  // document.querySelector('#delete-error').textContent = ''
-  // // reset notes display
-  // document.querySelector('#note-entry').textContent = ''
-})
+// close.addEventListener('click', () => {
+//   popUpContainer.classList.remove('show')
+// })
 
-// function fetchData() {
-//     fetch('/add')
-//     .then(res => res.json())
-//     .then(data => {
-//         data.forEach(entry => {
-//             /* DAY BOX COLORS */
-//             // Add a class to day box to change colors
-//             if(entry.overallMood === 'Anki') {
-//                 document.querySelector(`#date_${entry.date}`).classList.add('neutral');
-//             } else if(entry.overallMood === 'positive') {
-//                 document.querySelector(`#date_${entry.date}`).classList.add('positive');
-//             } else if(entry.overallMood === 'negative') {
-//                 document.querySelector(`#date_${entry.date}`).classList.add('negative');
-//             }
-//             // NOTES
-//             // Show notes indicator if notes exists
-//             if(entry.notes) {
-//                 // Add class to show styles if notes exists
-//                 document.querySelector(`#date_${entry.date} .notes-indicator`).classList.add('show')
-//             }
-//         })
-//     })
-// }
-
-// fetchData()
 
 /* DELETING ENTRIES */
 const deleteLink = document.querySelector('.delete-btn')
 
-deleteLink.addEventListener('click', deleteEntry)
+// deleteLink.addEventListener('click', deleteEntry)
 
 async function deleteEntry() {
   const entryId = this.dataset.id
@@ -160,5 +79,11 @@ async function deleteEntry() {
     console.log(err)
   }
 }
+
+const buttons = document.querySelectorAll(".btn")
+buttons.forEach(button => button.addEventListener("click", ()=> {
+  console.log('clicked')
+  button.classList.add('clicked-btn')
+}))
 
 

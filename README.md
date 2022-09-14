@@ -1,6 +1,6 @@
 # Introduction
 
-A Shopping List App built using the MVC Architecture. With authentication, users can register and log in to view, add, edit and delete items from their own shopping lists. 
+A calendar heatmap showing how many tasks the user completed on each day. I customized mine to be a 100devs daily task tracker.
 
 ---
 
@@ -12,17 +12,16 @@ A Shopping List App built using the MVC Architecture. With authentication, users
 
 - It's a 100-hour project created to understand how MVC concept and logins are added, as well how to take advantage of MongoDB and ejs to present and modify data to provide great UI/UX.
 
-🌟 User can register and log in to view, create, edit and delete their own shopping lists
+🌟 User can register and log in to view, create, edit and delete their daily entry of tasks
 
-🌟 User can choose the priority for each item
+🌟 User get to see a heatmap showing all dates start 9 months ago
 
-🌟 After purchasing, user can choose to arichive the item to be used later on, or delete the item
+🌟 User can do a quick add, or click on the last square(today) to log today's assignments 
 
-🌟 The shopping list are sorted by stores and then priority
+🌟 Use can hover over each square to see the date and number of tasks completed
 
-🌟 Archived items can easily be added back to a shopping list
+🌟 When clicking on a square, a popup window will appear showing which tasks have been checked off. The user can update or delete the entry
 
-🌟 User can set frequency so an item can automatically be added back to the shopping list after the set period from the day of purchase
 
 ---
 

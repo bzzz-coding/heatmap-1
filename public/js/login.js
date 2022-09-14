@@ -17,3 +17,9 @@ svg2.addEventListener("click", function () {
 		pwInput2.type = pwInput2.type === "password" ? "text" : "password";
 	}, 125)
 })
+
+const buttons = document.querySelectorAll(".btn")
+buttons.forEach(button => button.addEventListener("click", ()=> {
+  console.log('clicked')
+  button.classList.add('clicked-btn')
+}))

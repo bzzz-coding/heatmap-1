@@ -27,7 +27,7 @@ body {
 h1 {
   font-size: 3rem;
   font-weight: 600;
-  background-image: linear-gradient(to left, rgb(29, 66, 134), rgb(162, 196, 245));
+  background-image: linear-gradient(to left, #6f6cde, rgb(131, 161, 204));
   color: transparent;
   background-clip: text;
   -webkit-background-clip: text;
@@ -80,19 +80,14 @@ ul li label .icon-box {
   border-radius: 10px;
 }
 
-ul li label .btn-text{
+/* ul li label .btn-text{
   width: 180px;
-}
-
-.btn-text {
-  color: #6a9bd8;
-  font-size: 20px;
 }
 
 ul li label .icon-box .fa {
   font-size: 30px;
   color: #6a9bd8;
-}
+} */
 
 .quick-btn {
   background: none;
@@ -104,3 +99,24 @@ ul li label .icon-box .fa {
 	outline: inherit;
 }
 
+
+/* ---- Buttons ---- */
+.btn {
+  /* color: #6a9bd8; */
+  font-size: 30px;
+}
+
+.btn {
+  opacity: 1;
+  box-shadow: inset -4px -4px 8px rgba(255, 255, 255, 0.5),
+    inset 8px 8px 16px rgba(0, 0, 0, 0.1);
+  color: #6f6cde;
+}
+
+
+.btn:hover {
+  opacity: 0.8;
+  box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8),
+    6px 6px 10px rgba(0, 0, 0, 0.2);
+  color: #6f6cde;
+}

@@ -14,7 +14,7 @@
 }
 
 .clear {
-clear: both;
+  clear: both;
 }
 
 /******************************************
@@ -32,7 +32,7 @@ body {
 header h1 {
   font-size: 3rem;
   font-weight: 600;
-  background-image: linear-gradient(to left, rgb(29, 66, 134), rgb(162, 196, 245));
+  background-image: linear-gradient(to left, #6f6cde, rgb(131, 161, 204));
   color: transparent;
   background-clip: text;
   -webkit-background-clip: text;
@@ -68,12 +68,15 @@ header h1 {
   }
 }
 
-header, .heatmap-section {
+header,
+.heatmap-section {
   margin: 1%;
   min-width: 100vw;
 }
 
-.input-wrapper, .heatmap-section, .dayLabelsContainer  {
+.input-wrapper,
+.heatmap-section,
+.dayLabelsContainer {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -85,7 +88,7 @@ header, .heatmap-section {
   align-items: flex-end;
   align-items: flex-start;
 
-  align-content: center;  
+  align-content: center;
   margin: 0 auto;
 }
 
@@ -96,11 +99,11 @@ header, .heatmap-section {
 
 @media screen and (max-width: 425px) {
   .heatmap-section {
-       flex-direction: row;
-       height: 100%;
-       width: 100%;
-       margin: 0 auto;
-       padding: 0 1rem;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1rem;
   }
 }
 
@@ -118,7 +121,8 @@ header, .heatmap-section {
   margin-top: 150px;
 }
 
-.dayLabel, .monthLabel {
+.dayLabel,
+.monthLabel {
   font-size: .85rem;
   color: #75A5FC;
 }
@@ -158,8 +162,7 @@ header, .heatmap-section {
 
 .pop-up-container.show,
 .dayBoxBubble.show,
-.dayBoxPointer.show,
-.dateError.show {
+.dayBoxPointer.show {
   pointer-events: auto;
   opacity: 1;
   transition: opacity 0.2s ease;
@@ -262,7 +265,8 @@ h2 {
   transition: all 0.3s ease-in-out;
 }
 
-#pop-up-day, #pop-up-date {
+#pop-up-day,
+#pop-up-date {
   margin: 0;
 }
 
@@ -279,7 +283,8 @@ h2 {
   padding: .25rem;
 }
 
-#date:hover, .buttons *:hover {
+#date:hover,
+.buttons *:hover {
   background-color: rgba(255, 255, 255, .12);
   border: 1px solid rgba(255, 255, 255, .13);
   transition: all 0.3s ease-in-out;
@@ -300,19 +305,9 @@ textarea {
   padding: .35rem .55rem;
 }
 
-#delete-error {
-  color: orange;
-}
 
 
-
-/* ===================== */
-/* * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-} */
-
+/* ==========  Buttons  =========== */
 
 body {
   /* display: flex;
@@ -341,26 +336,32 @@ ul {
   background: #ebf5fc;
   box-shadow: -2px -2px 5px rgba(255, 255, 255, 1), 3px 3px 5px rgba(0, 0, 0, 0.1);
 }
+
 ul li {
   position: relative;
   list-style: none;
   text-align: center;
   margin: 15px;
 }
+
 ul li label {
   position: relative;
   cursor: pointer;
 }
+
 ul li label input[type="checkbox"] {
   position: absolute;
   opacity: 0;
 }
-ul li label :checked ~ .icon-box {
+
+ul li label :checked~.icon-box {
   box-shadow: inset -2px -2px 5px rgba(255, 255, 255, 1), inset 3px 3px 5px rgba(0, 0, 0, 0.1);
 }
-ul li label :checked ~ .icon-box .fa {
+
+ul li label :checked~.icon-box .fa {
   transform: scale(0.95);
 }
+
 ul li label .icon-box {
   width: 120px;
   height: 60px;
@@ -388,31 +389,73 @@ ul li label .icon-box {
   align-items: center;
   box-shadow: -2px -2px 5px rgba(255, 255, 255, 1), 3px 3px 5px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-  color: #6a9bd8;
+  color:#6f6cde;
 }
 
-ul li label .btn-text {
+ul li label .btn {
   width: 180px;
 }
 
-.btn-text{
-  color: #6a9bd8;
-  font-size: 20px;
-}
 
 ul li label .icon-box .fa {
   font-size: 20px;
   color: #6a9bd8;
-  font-family: 'Lato', sans-serif;;
+  font-family: 'Lato', sans-serif;
+  ;
+}
+
+ul li label .icon-box:hover {
+  opacity: 0.8;
+  box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8),
+    6px 6px 10px rgba(0, 0, 0, 0.2);
 }
 
 .quick-btn {
   background: none;
-	color: inherit;
-	border: none;
-	padding: 0;
-	font: inherit;
-	cursor: pointer;
-	outline: inherit;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
 }
 
+.btn {
+  /* color: #6a9bd8; */
+  font-size: 20px;
+}
+
+.btn {
+  opacity: 1;
+  box-shadow: inset -4px -4px 8px rgba(255, 255, 255, 0.5),
+    inset 8px 8px 16px rgba(0, 0, 0, 0.1);
+  color: #6f6cde;
+}
+
+
+.btn:hover {
+  opacity: 0.8;
+  box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8),
+    6px 6px 10px rgba(0, 0, 0, 0.2);
+  color: #7d41ec;
+}
+
+.clicked-btn {
+  /* background-color: black;
+  box-shadow: inset -2px -2px 5px rgba(255, 255, 255, 1), inset 3px 3px 5px rgba(0, 0, 0, 0.1);
+  transform: scale(0.95); */
+  opacity: 1;
+  box-shadow: inset -4px -4px 8px rgba(255, 255, 255, 0.5),
+    inset 8px 8px 16px rgba(0, 0, 0, 0.1);
+  transform: scale(0.95);
+}
+
+.btn:focus {
+  /* background-color: black;
+  box-shadow: inset -2px -2px 5px rgba(255, 255, 255, 1), inset 3px 3px 5px rgba(0, 0, 0, 0.1);
+  transform: scale(0.95); */
+  opacity: 1;
+  box-shadow: inset -4px -4px 8px rgba(255, 255, 255, 0.5),
+    inset 8px 8px 16px rgba(0, 0, 0, 0.1);
+  transform: scale(0.95);
+}

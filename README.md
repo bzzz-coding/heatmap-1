@@ -54,4 +54,8 @@ bcrypt, connect-mongo, dotenv, ejs, express, express-flash, express-session, mon
  Have fun testing and improving it! 😎
 
 
-# heatmap-1
+# Special thanks to:
+- Leon(100devs)'s todo-mvc-auth-local code base: https://github.com/100devs/todo-mvc-auth-local
+- Bianca's amazing mood-tracker app: https://github.com/bytesbybianca/mood-tracker
+- Mayanwolfe's streams/vods on mvc and user authentication: https://www.twitch.tv/mayanwolfe
+- 100devs: https://leonnoel.com/100devs/

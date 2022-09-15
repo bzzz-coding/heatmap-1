@@ -2,10 +2,7 @@
   box-sizing: border-box;
 }
 
-
-/******************************************
-/* BASE STYLES
-/*******************************************/
+/* Basic styles */
 
 body {
   /* background-color: #12171D;
@@ -25,10 +22,8 @@ header h1 {
   margin-bottom: 3%;
 }
 
-/******************************************
-/* LAYOUT
-/*******************************************/
-/* ======= Express Form ========== */
+
+/* Express Form */
 #express-form {
   margin: 1% auto;
   font-size: 1.2rem;
@@ -201,7 +196,7 @@ header,
 
 
 
-/* ADDITIONAL STYLES */
+/* additional */
 
 h1 {
   text-align: center;
@@ -278,7 +273,7 @@ a label {
 }
 
 
-/* ==========  Buttons  =========== */
+/* Buttons */
 
 body {
   background: #ebf5fc;
@@ -424,14 +419,6 @@ ul li label .icon-box .fa {
 }
 
 
-/* 
-.new-container {
-  display: flex;
-  max-width: 400px;
-  margin: 0 auto;
-  font-family: 'Lato', sans-serif;
-  font-size: 13px;
-} */
 
 ul.ks-cboxtags {
   list-style: none;

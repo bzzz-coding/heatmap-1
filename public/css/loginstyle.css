@@ -22,6 +22,7 @@
 
 body {
 	background: var(--greyLight-1);
+	font-family: 'Lato', sans-serif;
 }
 
 form {

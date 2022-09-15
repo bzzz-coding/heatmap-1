@@ -129,7 +129,7 @@ svg {
 .signout {
   width: 50px;
   height: 50px;
-  background: #ebf5fc;
+	background: var(--greyLight-1);
   text-align: center;
   display: flex;
   justify-content: center;

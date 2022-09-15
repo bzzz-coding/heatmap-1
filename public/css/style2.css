@@ -1,21 +1,7 @@
-/* Box Model Hack */
 * {
   box-sizing: border-box;
 }
 
-/* Clear fix hack - not being used */
-.clearfix:after {
-  content: ".";
-  display: block;
-  clear: both;
-  visibility: hidden;
-  line-height: 0;
-  height: 0;
-}
-
-.clear {
-  clear: both;
-}
 
 /******************************************
 /* BASE STYLES
@@ -146,7 +132,8 @@ header,
 
 /* Pop up box */
 .pop-up-container {
-  background-color: rgba(13, 93, 244, 0.4);
+  /* background-color: rgba(13, 93, 244, 0.4); */
+  background-color: #ebf5fc;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -173,13 +160,12 @@ header,
 }
 
 .pop-up {
-  /* background-color: rgba(6, 20, 47, 0.8); */
-  background-color: rgba(29, 66, 134, 0.8);
-  color: #EEE;
+  background-color: #ebf5fc;
+  color: #6f6cde;
   border-radius: 10px;
-  box-shadow: 0 3px 20px rgba(2, 18, 45, 0.3);
+  box-shadow: -2px -2px 5px rgba(255, 255, 255, 1), 3px 3px 5px rgba(0, 0, 0, 0.1);
   padding: 2rem 3rem 3.5rem 3rem;
-  width: 35vw;
+  width: 50vw;
   max-width: 100%;
   text-align: center;
 }
@@ -213,6 +199,8 @@ header,
   text-align: left;
 }
 
+
+
 /* ADDITIONAL STYLES */
 
 h1 {
@@ -245,75 +233,54 @@ h2 {
   border: 1px solid rgba(128, 128, 128, 0.15);
 }
 
-
 .close-container {
   text-align: right;
   margin: 0;
   padding: 0;
 }
 
-/* #close {
-  background-color: rgba(255, 255, 255, .1);
-  border-radius: 1px;
+.cross {
+  font: 2rem;
+  padding: 5px;
+  width: fit-content;
+}
+
+#close {
+  background-color: #6a9cd858;
+  box-shadow: 0.3rem 0.3rem 0.6rem #e4ebf5,
+  -0.2rem -0.2rem 0.5rem #c8d0e7;
+  border-radius: 5px;
   color: rgba(255, 255, 255, .6);
-  border: 0px solid red;
   margin: 0;
-} */
+  padding: 3px 6px;
+}
 
 #close:hover {
-  background-color: rgba(255, 255, 255, .2);
+  background-color: #6a9cd89c;
+  color: #EEE;
   transition: all 0.3s ease-in-out;
 }
 
-#pop-up-day,
-#pop-up-date {
-  margin: 0;
+/* update button in edit box */
+.update-btn,
+.delete-btn {
+  border: 0px;
+  border-radius: 5px;
+  padding: 10px 15px;
+  margin: 5px;
+  background-color: #ebf5fc;
 }
 
-#pop-up-date {
-  font-size: 2rem;
-  color: #75A5FC;
+.btn,
+a,
+a label {
+  cursor: pointer;
 }
-
-#date {
-  background-color: rgba(255, 255, 255, .1);
-  border: 1px solid rgba(255, 255, 255, .11);
-  color: ivory;
-  margin-left: .5rem;
-  padding: .25rem;
-}
-
-#date:hover,
-.buttons *:hover {
-  background-color: rgba(255, 255, 255, .12);
-  border: 1px solid rgba(255, 255, 255, .13);
-  transition: all 0.3s ease-in-out;
-}
-
-textarea {
-  resize: none;
-  background-color: rgba(255, 255, 255, .1);
-  border: 1px solid rgba(255, 255, 255, .11);
-  color: rgba(255, 255, 255, .6);
-  padding: .35rem .55rem;
-}
-
-.buttons * {
-  background-color: rgba(255, 255, 255, .1);
-  border: 1px solid rgba(255, 255, 255, .11);
-  color: rgba(255, 255, 255, .6);
-  padding: .35rem .55rem;
-}
-
 
 
 /* ==========  Buttons  =========== */
 
 body {
-  /* display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh; */
   background: #ebf5fc;
 }
 
@@ -389,7 +356,7 @@ ul li label .icon-box {
   align-items: center;
   box-shadow: -2px -2px 5px rgba(255, 255, 255, 1), 3px 3px 5px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-  color:#6f6cde;
+  color: #6f6cde;
 }
 
 ul li label .btn {
@@ -404,11 +371,11 @@ ul li label .icon-box .fa {
   ;
 }
 
-ul li label .icon-box:hover {
+/* ul li label .icon-box:hover {
   opacity: 0.8;
   box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8),
     6px 6px 10px rgba(0, 0, 0, 0.2);
-}
+} */
 
 .quick-btn {
   background: none;
@@ -427,8 +394,10 @@ ul li label .icon-box:hover {
 
 .btn {
   opacity: 1;
-  box-shadow: inset -4px -4px 8px rgba(255, 255, 255, 0.5),
-    inset 8px 8px 16px rgba(0, 0, 0, 0.1);
+  /* box-shadow: inset -4px -4px 8px rgba(255, 255, 255, 0.5),
+    inset 8px 8px 16px rgba(0, 0, 0, 0.1); */
+  box-shadow: 0.3rem 0.3rem 0.6rem #e4ebf5,
+    -0.2rem -0.2rem 0.5rem #c8d0e7;
   color: #6f6cde;
 }
 
@@ -441,19 +410,6 @@ ul li label .icon-box:hover {
 }
 
 .clicked-btn {
-  /* background-color: black;
-  box-shadow: inset -2px -2px 5px rgba(255, 255, 255, 1), inset 3px 3px 5px rgba(0, 0, 0, 0.1);
-  transform: scale(0.95); */
-  opacity: 1;
-  box-shadow: inset -4px -4px 8px rgba(255, 255, 255, 0.5),
-    inset 8px 8px 16px rgba(0, 0, 0, 0.1);
-  transform: scale(0.95);
-}
-
-.btn:focus {
-  /* background-color: black;
-  box-shadow: inset -2px -2px 5px rgba(255, 255, 255, 1), inset 3px 3px 5px rgba(0, 0, 0, 0.1);
-  transform: scale(0.95); */
   opacity: 1;
   box-shadow: inset -4px -4px 8px rgba(255, 255, 255, 0.5),
     inset 8px 8px 16px rgba(0, 0, 0, 0.1);

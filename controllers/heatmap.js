@@ -130,17 +130,34 @@ module.exports = {
     },
 
     getEdit: async (req, res) => {
+        let today = new Date()
+            
+            let thisYear = today.getFullYear()
+            let thisMonth = today.getMonth() + 1
+            let thisDate = today.getDate()
+
+            if (thisDate < 10) {
+                thisDate = '0' + thisDate;
+             }
+             
+             if (thisMonth < 10) {
+                thisMonth = '0' + thisMonth;
+             } 
+            
+           
+            let todayDate = `${thisYear}-${thisMonth}-${thisDate}`
+
         const date = req.params.date
-        const today = new Date().toJSON().slice(0,10)
+        // const today = new Date().toJSON().slice(0,10)
         console.log(date)
-        console.log(today)
+        console.log(todayDate)
         try {
             const assignment = await Assignment.findOne({ 
                 userId: req.user.id, 
                 date: date
             })
             console.log(assignment)
-            res.render('edit.ejs', {assignment: assignment, user: req.user, date: date, today: today})
+            res.render('edit.ejs', {assignment: assignment, user: req.user, date: date, today: todayDate})
         } catch (err) {
             console.log(err)
         }

@@ -10,10 +10,6 @@
 integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 <link rel="stylesheet" href="/css/style.css">
 
-<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
-integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,900&display=swap" rel="stylesheet"><link rel="stylesheet" href="/css/normalized.css">
@@ -38,13 +34,62 @@ integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQV
     
         
         <form id="update-form" action="/heatmap/add" method="POST">
-            <label for="date">Choose date: </label>
+          <label for="date">Choose date: </label>
+          <input type="date" name="date" ass="block"  value="<%=date%>" min="2022-01-01" max="<%=today%>" required>
+          
+          <div class="outer-div">
+            <div class="new-container">
+              <ul class="ks-cboxtags">
+                <% if (assignment && assignment.completed && assignment.completed.includes('Anki')) { %>
+                  <li><input type="checkbox" id="checkboxOne" name="anki"  value="Anki" checked><label for="checkboxOne">Reviewed Anki Flashcards</label></li>
+                <% } else { %>
+                  <li><input type="checkbox" id="checkboxOne" name="anki"  value="Anki"><label for="checkboxOne">Reviewed Anki Flashcards</label></li>
+                <% } %>
+
+                <% if (assignment && assignment.completed && assignment.completed.includes('Bank')) { %>
+                  <li><input type="checkbox" id="checkboxTwo" name="bank"  value="Bank" checked><label for="checkboxTwo">Practiced Interview Questions</label></li>
+                <% } else { %>
+                  <li><input type="checkbox" id="checkboxTwo" name="bank"  value="Bank"><label for="checkboxTwo">Practiced Interview Questions</label></li>
+                <% } %>
+
+                <% if (assignment && assignment.completed && assignment.completed.includes('Coding Challenge')) { %>
+                  <li><input type="checkbox" id="checkboxThree" name="codingChallenge"  value="Coding Challenge" checked><label for="checkboxThree">Completed Coding Challenge</label></li>
+                <% } else { %>
+                  <li><input type="checkbox" id="checkboxThree" name="codingChallenge"  value="Coding Challenge"><label for="checkboxThree">Completed Coding Challenge</label></li>
+                <% } %>
+              </ul>
+            </div>
+          </div>
             
-            <input type="date" name="date" ass="block"  value="<%=date%>" min="2022-01-01" max="<%=today%>" required>
+            <!-- <div class="block btn-block"> -->
+              <button class="btn update-btn" form="update-form" type="submit">Update</button>
+              <% if (assignment) { %>
+                <a class="btn delete-btn" id="delete"  data-id='<%= assignment._id %>'>Delete</a>
+              <% } %>
+            <!-- </div> -->
+        </form>
+
+        
+      </section>
+    </div>
+      
+    
+  <!-- wrapper div -->
+  </div>
+
+    <script src="/js/edit.js"></script>
+</body>
+</html>
+
+
+
+     
+            
+            <!-- <input type="date" name="date" ass="block"  value="<%=date%>" min="2022-01-01" max="<%=today%>" required>
             <div class="selectContainer block">
               <% if (assignment && assignment.completed && assignment.completed.includes('Anki')) { %>
                 <div class="popup-input">
-                  <input type="checkbox" name="anki" id="anki" value="Anki" checked>
+                  <input type="checkbox" id="anki" name="anki"  value="Anki" checked>
                   <label for="overallPositive" >Studied Anki Flashcards</label>
                 </div>
               <% } else { %>
@@ -76,26 +121,6 @@ integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQV
                   <input type="checkbox" name="codingChallenge" id="codingChallenge" value="Coding Challenge">
                   <label for="overallPositive" >Solved Coding Challenge</label>
                 </div>
-              <% } %>
+              <% } %> 
                   
-            </div>
-              
-            <!-- <div class="block btn-block"> -->
-              <button class="btn update-btn" form="update-form" type="submit">Update</button>
-              <% if (assignment) { %>
-                <a class="btn delete-btn" id="delete"  data-id='<%= assignment._id %>'>Delete</a>
-              <% } %>
-            <!-- </div> -->
-        </form>
-
-        
-      </section>
-    </div>
-      
-    
-  <!-- wrapper div -->
-  </div>
-
-    <script src="/js/edit.js"></script>
-</body>
-</html>
+            </div>-->

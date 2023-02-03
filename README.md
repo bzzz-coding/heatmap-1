@@ -1,3 +1,17 @@
+<td width="50%" valign="top">
+  <h3 align="center">Daily Task Heatmap</h3>
+    <br />
+    <a target="_blank" href="https://github.com/bzzz-coding/heatmap-1">
+        <video src="https://user-images.githubusercontent.com/86077274/200139111-29dcb8a9-3175-4d2e-9d1e-24d6cf4bc43c.mov" width="100%" alt="Daily Task Heatmap"/>
+    </a>
+    <br />
+    <p align="center">
+  </p>
+    <br />
+    <p><strong>Node, Express, MongoDB, EJS, Javascript, HTML & CSS</strong> - Track and celebrate the completion of user's daily tasks with a GitHub-style heatmap!</p>
+  <a href="https://100devs-heatmap.cyclic.app/"><p>Link to app</p></a>
+</td>
+
 # Introduction
 
 A calendar heatmap showing how many tasks the user completed on each day. I customized mine to be a 100devs daily task tracker.

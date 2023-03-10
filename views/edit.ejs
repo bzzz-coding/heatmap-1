@@ -41,15 +41,15 @@ integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7
             <div class="new-container">
               <ul class="ks-cboxtags">
                 <% if (assignment && assignment.completed && assignment.completed.includes('Anki')) { %>
-                  <li><input type="checkbox" id="checkboxOne" name="anki"  value="Anki" checked><label for="checkboxOne">Reviewed Anki Flashcards</label></li>
+                  <li><input type="checkbox" id="checkboxOne" name="anki"  value="Anki" checked><label for="checkboxOne">Reviewed Technical Questions</label></li>
                 <% } else { %>
-                  <li><input type="checkbox" id="checkboxOne" name="anki"  value="Anki"><label for="checkboxOne">Reviewed Anki Flashcards</label></li>
+                  <li><input type="checkbox" id="checkboxOne" name="anki"  value="Anki"><label for="checkboxOne">Reviewed Technical Questions</label></li>
                 <% } %>
 
                 <% if (assignment && assignment.completed && assignment.completed.includes('Bank')) { %>
-                  <li><input type="checkbox" id="checkboxTwo" name="bank"  value="Bank" checked><label for="checkboxTwo">Practiced Interview Questions</label></li>
+                  <li><input type="checkbox" id="checkboxTwo" name="bank"  value="Bank" checked><label for="checkboxTwo">Practiced Behavioral Questions</label></li>
                 <% } else { %>
-                  <li><input type="checkbox" id="checkboxTwo" name="bank"  value="Bank"><label for="checkboxTwo">Practiced Interview Questions</label></li>
+                  <li><input type="checkbox" id="checkboxTwo" name="bank"  value="Bank"><label for="checkboxTwo">Practiced Behavioral Questions</label></li>
                 <% } %>
 
                 <% if (assignment && assignment.completed && assignment.completed.includes('Coding Challenge')) { %>
